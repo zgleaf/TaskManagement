@@ -1,4 +1,4 @@
-<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="logmanage.aspx.vb" Inherits="TastManagement.dbmanager" %>
+<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="logmanage.aspx.vb" Inherits="TastManagement.logmanager" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 

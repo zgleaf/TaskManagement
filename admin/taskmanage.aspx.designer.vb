@@ -14,12 +14,12 @@ Option Explicit On
 
 
 '''<summary>
-'''dbmanager class.
+'''taskmanager class.
 '''</summary>
 '''<remarks>
 '''Auto-generated class.
 '''</remarks>
-Partial Public Class dbmanager
+Partial Public Class taskmanager
 
     '''<summary>
     '''form1 control.
