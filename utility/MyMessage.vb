@@ -10,5 +10,4 @@ Public Class MyMessage
         p.Response.Write(script)
     End Sub
 
-
 End Class

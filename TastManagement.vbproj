@@ -30,6 +30,10 @@
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\assembly\GAC_MSIL\Microsoft.ReportViewer.WebForms\8.0.0.0__b03f5f7f11d50a3a\Microsoft.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -69,8 +73,10 @@
       <DependentUpon>TaskManagement.mdf</DependentUpon>
     </Content>
     <Content Include="admin\taskmanage.aspx" />
+    <Content Include="commiter\Commiter.aspx" />
     <Content Include="login.aspx" />
     <Content Include="admin\usermanage.aspx" />
+    <Content Include="task\TaskReport.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -88,6 +94,18 @@
       <SubType>ASPXCodebehind</SubType>
       <DependentUpon>taskmanage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Data\DataSetTask.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetTask.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="commiter\Commiter.aspx.designer.vb">
+      <DependentUpon>Commiter.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="commiter\Commiter.aspx.vb">
+      <SubType>ASPXCodebehind</SubType>
+      <DependentUpon>Commiter.aspx</DependentUpon>
+    </Compile>
     <Compile Include="login.aspx.vb">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>login.aspx</DependentUpon>
@@ -95,8 +113,9 @@
     <Compile Include="login.aspx.designer.vb">
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Message\MyLog.vb" />
-    <Compile Include="Message\MyMessage.vb" />
+    <Compile Include="utility\MyDB.vb" />
+    <Compile Include="utility\MyLog.vb" />
+    <Compile Include="utility\MyMessage.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -119,6 +138,13 @@
       <SubType>ASPXCodebehind</SubType>
       <DependentUpon>usermanage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="task\TaskReport.aspx.designer.vb">
+      <DependentUpon>TaskReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="task\TaskReport.aspx.vb">
+      <SubType>ASPXCodebehind</SubType>
+      <DependentUpon>TaskReport.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -127,8 +153,22 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="task\TaskBar.rdlc" />
+    <EmbeddedResource Include="task\TaskMatrix.rdlc" />
+    <EmbeddedResource Include="task\TaskPie.rdlc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App_Data\DataSetTask.xsc">
+      <DependentUpon>DataSetTask.xsd</DependentUpon>
+    </None>
+    <None Include="App_Data\DataSetTask.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetTask.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App_Data\DataSetTask.xss">
+      <DependentUpon>DataSetTask.xsd</DependentUpon>
+    </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>

@@ -14,12 +14,12 @@ Option Explicit On
 
 
 '''<summary>
-'''usermanage class.
+'''Commiter class.
 '''</summary>
 '''<remarks>
 '''Auto-generated class.
 '''</remarks>
-Partial Public Class usermanage
+Partial Public Class Commiter
 
     '''<summary>
     '''form1 control.
@@ -31,128 +31,110 @@ Partial Public Class usermanage
     Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
 
     '''<summary>
-    '''TaskMgr control.
+    '''TxtUserName control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TaskMgr As Global.System.Web.UI.WebControls.SqlDataSource
+    Protected WithEvents TxtUserName As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''UserView control.
+    '''HL_tasknum control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents UserView As Global.System.Web.UI.WebControls.GridView
+    Protected WithEvents HL_tasknum As Global.System.Web.UI.WebControls.HyperLink
 
     '''<summary>
-    '''TxtName control.
+    '''DDL_Type control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TxtName As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents DDL_Type As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''TbName control.
+    '''SqlDataSourceTask control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TbName As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents SqlDataSourceTask As Global.System.Web.UI.WebControls.SqlDataSource
 
     '''<summary>
-    '''TxtPwd control.
+    '''TB_plandate control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TxtPwd As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents TB_plandate As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''TbPassword control.
+    '''DDL_planhour control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TbPassword As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents DDL_planhour As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''TxtType control.
+    '''DDL_planmin control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TxtType As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents DDL_planmin As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''ListPermission control.
+    '''Calendar_Plan control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ListPermission As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents Calendar_Plan As Global.System.Web.UI.WebControls.Calendar
 
     '''<summary>
-    '''Btn_Add control.
+    '''DDL_worker control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Btn_Add As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents DDL_worker As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''Btn_Pwd control.
+    '''SqlDataSourceWorker control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Btn_Pwd As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents SqlDataSourceWorker As Global.System.Web.UI.WebControls.SqlDataSource
 
     '''<summary>
-    '''Btn_Perm control.
+    '''TB_comment control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Btn_Perm As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents TB_comment As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Btn_Invalid control.
+    '''Btn_Commit control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Btn_Invalid As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
-    '''Btn_Valid control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Btn_Valid As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
-    '''TxtLog control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents TxtLog As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents Btn_Commit As Global.System.Web.UI.WebControls.Button
 End Class

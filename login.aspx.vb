@@ -9,45 +9,35 @@ Partial Public Class _Default
 
         Dim name = Me.TbName.Text()
         Dim pwd = Me.TbPassword.Text
-        Dim myselect = "SELECT * FROM [User] WHERE name='" + name + "';"
-        Dim myselect2 = "SELECT * FROM [User] WHERE name='" + name + "' AND pwd='" + pwd + "';"
 
-        Try
-            Dim connect As New SqlClient.SqlConnection(My.Resources.MyConnectString.ToString())
-            connect.Open()
+        Dim db As New MyDB
 
-            Dim cmd As New SqlClient.SqlCommand(myselect, connect)
-            Dim usr As SqlClient.SqlDataReader = cmd.ExecuteReader()
-            Dim usr_count = usr.HasRows()
-            usr.Close()
+        If Not db.isUser(name) Then
+            Dim msg As MyMessage
+            msg = New MyMessage(Me)
+            msg.alert("用户不存在！")
+            Return
+        ElseIf db.isUserInvalid(name) Then
+            Dim msg As MyMessage
+            msg = New MyMessage(Me)
+            msg.alert("用户已删除！")
+            Return
+        ElseIf Not db.login(name, pwd) Then
+            Dim msg As MyMessage
+            msg = New MyMessage(Me)
+            msg.alert("密码不正确！")
+            Return
+        Else
+            MyLog.log(name + " login.")
+        End If
 
-            Dim usr_login As Boolean = False
-            If usr_count Then
-                cmd.CommandText = myselect2
-                usr = cmd.ExecuteReader()
-                usr_login = usr.HasRows()
-                usr.Close()
-            End If
-            'Me.Log.Text = myselect + " ||  " + usr_count.ToString + " || " + myselect2 + " || " + usr_login.ToString
+        Dim type = db.getUserType(name)
+        If type = "commiter" Then
+            Response.Redirect("commiter/Commiter.aspx?name=" + name)
+        ElseIf type = "worker" Then
+        ElseIf type = "admin" Then
 
-            connect.Close()
-
-            If usr_count <> True Then
-                Dim msg As MyMessage
-                msg = New MyMessage(Me)
-                msg.alert("用户不存在！")
-            ElseIf usr_login <> True Then
-                Dim msg As MyMessage
-                msg = New MyMessage(Me)
-                msg.alert("密码不正确！")
-            Else
-                MyLog.log(name + "login.")
-            End If
-
-        Catch ex As Exception
-            TxtLog.Text = ex.ToString()
-
-        End Try
+        End If
 
     End Sub
 
