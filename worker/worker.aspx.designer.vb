@@ -14,12 +14,12 @@ Option Explicit On
 
 
 '''<summary>
-'''Commiter class.
+'''Worker class.
 '''</summary>
 '''<remarks>
 '''Auto-generated class.
 '''</remarks>
-Partial Public Class Commiter
+Partial Public Class Worker
 
     '''<summary>
     '''form1 control.
@@ -67,13 +67,13 @@ Partial Public Class Commiter
     Protected WithEvents SqlDataSourceMyTask As Global.System.Web.UI.WebControls.SqlDataSource
 
     '''<summary>
-    '''DDL_Type control.
+    '''DDL_TaskId control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents DDL_Type As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents DDL_TaskId As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''SqlDataSourceTask control.
@@ -85,58 +85,13 @@ Partial Public Class Commiter
     Protected WithEvents SqlDataSourceTask As Global.System.Web.UI.WebControls.SqlDataSource
 
     '''<summary>
-    '''TB_plandate control.
+    '''DDL_state control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TB_plandate As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''DDL_planhour control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents DDL_planhour As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''DDL_planmin control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents DDL_planmin As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''Calendar_Plan control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Calendar_Plan As Global.System.Web.UI.WebControls.Calendar
-
-    '''<summary>
-    '''DDL_worker control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents DDL_worker As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''SqlDataSourceWorker control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents SqlDataSourceWorker As Global.System.Web.UI.WebControls.SqlDataSource
+    Protected WithEvents DDL_state As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''TB_comment control.
@@ -148,11 +103,11 @@ Partial Public Class Commiter
     Protected WithEvents TB_comment As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Btn_Commit control.
+    '''Btn_Update control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Btn_Commit As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents Btn_Update As Global.System.Web.UI.WebControls.Button
 End Class

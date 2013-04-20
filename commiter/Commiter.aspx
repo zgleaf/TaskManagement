@@ -14,6 +14,29 @@
         <br />
         my tasks :
         <asp:HyperLink ID="HL_tasknum" runat="server">[HL_tasknum]</asp:HyperLink><br />
+        <asp:GridView ID="GridViewMyTask" runat="server" AllowPaging="True" AutoGenerateColumns="False"
+            DataKeyNames="id" DataSourceID="SqlDataSourceMyTask">
+            <Columns>
+                <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True"
+                    SortExpression="id" />
+                <asp:BoundField DataField="commiter" HeaderText="commiter" SortExpression="commiter" />
+                <asp:BoundField DataField="type" HeaderText="type" SortExpression="type" />
+                <asp:BoundField DataField="state" HeaderText="state" SortExpression="state" />
+                <asp:BoundField DataField="create_date" HeaderText="create_date" SortExpression="create_date" />
+                <asp:BoundField DataField="plan_finish_date" HeaderText="plan_finish_date" SortExpression="plan_finish_date" />
+                <asp:BoundField DataField="worker" HeaderText="worker" SortExpression="worker" />
+                <asp:BoundField DataField="work_state" HeaderText="work_state" SortExpression="work_state" />
+                <asp:BoundField DataField="update_date" HeaderText="update_date" SortExpression="update_date" />
+                <asp:BoundField DataField="description" HeaderText="description" SortExpression="description" />
+            </Columns>
+        </asp:GridView>
+        <asp:SqlDataSource ID="SqlDataSourceMyTask" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
+            SelectCommand="SELECT * FROM [Task] WHERE ([commiter] = @commiter)">
+            <SelectParameters>
+                <asp:ControlParameter ControlID="TxtUserName" Name="commiter" PropertyName="Text"
+                    Type="String" />
+            </SelectParameters>
+        </asp:SqlDataSource>
         <br />
         Type &nbsp;<asp:DropDownList ID="DDL_Type" runat="server" DataSourceID="SqlDataSourceTask" DataTextField="type" DataValueField="type">
             <asp:ListItem>Kaison</asp:ListItem>

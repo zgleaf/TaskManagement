@@ -10,13 +10,10 @@
     <form id="form1" runat="server">
     <div>
         <asp:SqlDataSource ID="TaskMgr" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
-            SelectCommand="SELECT * FROM [Log] ORDER BY [date] DESC" InsertCommand="INSERT INTO [Log] ([usr], [date], [info], [type]) VALUES (@usr, @date, @info, @type)">
-            <InsertParameters>
-                <asp:Parameter Name="usr" Type="String" />
-                <asp:Parameter DbType="Date" Name="date" />
-                <asp:Parameter Name="info" Type="String" />
-                <asp:Parameter Name="type" Type="String" />
-            </InsertParameters>
+            SelectCommand="SELECT * FROM [Log] ORDER BY [date] DESC" DeleteCommand="DELETE FROM [Log] WHERE (id = @id)">
+            <DeleteParameters>
+                <asp:Parameter Name="id" />
+            </DeleteParameters>
         </asp:SqlDataSource>
         &nbsp;</div>
         <asp:GridView ID="LogView" runat="server" AutoGenerateColumns="False"

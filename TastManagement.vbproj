@@ -78,6 +78,7 @@
     <Content Include="admin\usermanage.aspx" />
     <Content Include="task\TaskReport.aspx" />
     <Content Include="Web.config" />
+    <Content Include="worker\worker.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="admin\logmanage.aspx.designer.vb">
@@ -144,6 +145,13 @@
     <Compile Include="task\TaskReport.aspx.vb">
       <SubType>ASPXCodebehind</SubType>
       <DependentUpon>TaskReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="worker\worker.aspx.designer.vb">
+      <DependentUpon>worker.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="worker\worker.aspx.vb">
+      <DependentUpon>worker.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>

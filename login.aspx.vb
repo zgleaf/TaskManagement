@@ -35,6 +35,7 @@ Partial Public Class _Default
         If type = "commiter" Then
             Response.Redirect("commiter/Commiter.aspx?name=" + name)
         ElseIf type = "worker" Then
+            Response.Redirect("worker/Worker.aspx?name=" + name)
         ElseIf type = "admin" Then
 
         End If

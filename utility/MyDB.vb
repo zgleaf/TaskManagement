@@ -239,9 +239,9 @@ Public Class MyDB
 
     End Function
 
-    Public Function getTaskInfo(ByVal name As String) As String
+    Public Function getTaskInfo(ByVal name As String, ByVal perm As String) As String
 
-        Dim myselect = "SELECT type,state,plan_finish_date,work_state FROM [Task] WHERE commiter='" + name + "';"
+        Dim myselect = "SELECT type,state,plan_finish_date,work_state FROM [Task] WHERE " + perm + "='" + name + "';"
 
         Try
             If Not connect.State = ConnectionState.Open Then
@@ -249,17 +249,17 @@ Public Class MyDB
             End If
 
             Dim cmd As New SqlClient.SqlCommand(myselect, connect)
-            Dim usr As SqlClient.SqlDataReader = cmd.ExecuteReader()
-            Dim usr_count = usr.HasRows()
+            Dim task As SqlClient.SqlDataReader = cmd.ExecuteReader()
+            Dim task_count = task.HasRows()
 
-            If Not usr_count Then
+            If Not task_count Then
                 Return "no data"
             End If
 
             Dim task_num, task_kaison, task_5s, task_ehs, task_qc, task_dam As Integer
             Dim task_close, task_normal, task_delay As Integer
-            While usr.Read
-                Dim type = usr.GetString(0)
+            While task.Read
+                Dim type = task.GetString(0)
                 If type = "Kaizen" Then
                     task_kaison += 1
                 ElseIf type = "5s" Then
@@ -272,12 +272,12 @@ Public Class MyDB
                     task_dam += 1
                 End If
 
-                Dim state = usr.GetString(1)
+                Dim state = task.GetString(1)
                 If state = "close" Then
                     task_close += 1
                 Else
-                    Dim plan_date As DateTime = usr.GetDateTime(2)
-                    Dim wk_state = usr.GetInt32(3)
+                    Dim plan_date As DateTime = task.GetDateTime(2)
+                    Dim wk_state = task.GetInt32(3)
                     If plan_date >= Now Then
                         task_normal += 1
                     Else
@@ -292,7 +292,7 @@ Public Class MyDB
                 task_num += 1
             End While
 
-            usr.Close()
+            task.Close()
 
             Dim res = "All " + task_num.ToString() + ", "
             res += "normal " + task_normal.ToString() + ","
@@ -314,7 +314,65 @@ Public Class MyDB
 
     End Function
 
-    Public Function addTask(ByVal info As String, ByVal task As String) As Boolean
+    Public Function getTaskState(ByVal id As Integer, ByRef state As Integer, ByRef descript As String) As Boolean
+
+        Dim myselect = "SELECT work_state, description FROM [Task] WHERE id=" + id.ToString() + ";"
+
+        Try
+            If Not connect.State = ConnectionState.Open Then
+                Return False
+            End If
+
+            Dim cmd As New SqlClient.SqlCommand(myselect, connect)
+            Dim task As SqlClient.SqlDataReader = cmd.ExecuteReader()
+            Dim task_count = task.HasRows()
+
+            If Not task_count Then
+                Return False
+            End If
+
+            While task.Read
+                state = task.GetInt32(0)
+                descript = task.GetString(1)
+                Return True
+            End While
+
+            task.Close()
+
+        Catch ex As Exception
+            MyLog.err(ex.ToString)
+
+        End Try
+
+        Return False
+
+    End Function
+
+    Public Function setTaskState(ByVal id As Integer, ByVal worker As String, ByVal state As Integer, ByVal descript As String) As Boolean
+
+        Dim myupdate = "UPDATE [Task] SET work_state=" + state.ToString() + ", description=@descript WHERE id=" + id.ToString() + " AND worker='" + worker + "';"
+
+        Try
+            If Not connect.State = ConnectionState.Open Then
+                Return False
+            End If
+
+            Dim cmd As New SqlClient.SqlCommand(myupdate, connect)
+            cmd.Parameters.AddWithValue("@descript", descript)
+            cmd.ExecuteNonQuery()
+
+            Return True
+
+        Catch ex As Exception
+            MyLog.err(ex.ToString)
+
+        End Try
+
+        Return False
+
+    End Function
+
+    Public Function addTask(ByVal info As String, ByVal task As String, ByVal descript As String) As Boolean
 
         Dim myinsert = "INSERT INTO [Task] (" + info + ") VALUES (" + task + ");"
 
@@ -324,6 +382,7 @@ Public Class MyDB
             End If
 
             Dim cmd As New SqlClient.SqlCommand(myinsert, connect)
+            cmd.Parameters.AddWithValue("@descript", descript)
             cmd.ExecuteNonQuery()
 
             Return True
