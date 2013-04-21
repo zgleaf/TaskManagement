@@ -222,7 +222,7 @@ Public Class MyDB
                 ElseIf type = 1 Then
                     user_type = "commiter"
                 ElseIf type = 2 Then
-                    user_type = "worker"
+                    user_type = "responsible"
                 End If
             End While
 
@@ -241,7 +241,7 @@ Public Class MyDB
 
     Public Function getTaskInfo(ByVal name As String, ByVal perm As String) As String
 
-        Dim myselect = "SELECT type,state,plan_finish_date,work_state FROM [Task] WHERE " + perm + "='" + name + "';"
+        Dim myselect = "SELECT type,status,plan_finish_date FROM [Task] WHERE " + perm + "='" + name + "';"
 
         Try
             If Not connect.State = ConnectionState.Open Then
@@ -257,7 +257,7 @@ Public Class MyDB
             End If
 
             Dim task_num, task_kaison, task_5s, task_ehs, task_qc, task_dam As Integer
-            Dim task_close, task_normal, task_delay As Integer
+            Dim task_close, task_finished, task_normal, task_delay As Integer
             While task.Read
                 Dim type = task.GetString(0)
                 If type = "Kaizen" Then
@@ -272,20 +272,18 @@ Public Class MyDB
                     task_dam += 1
                 End If
 
-                Dim state = task.GetString(1)
-                If state = "close" Then
+                Dim status = task.GetString(1)
+                If status = "closed" Then
                     task_close += 1
-                Else
+                ElseIf status = "finished" Then
+                    task_finished += 1
+                ElseIf status = "on-going" Or status = "new" Then
                     Dim plan_date As DateTime = task.GetDateTime(2)
-                    Dim wk_state = task.GetInt32(3)
+
                     If plan_date >= Now Then
                         task_normal += 1
                     Else
-                        If wk_state = 100 Then
-                            task_normal += 1
-                        Else
-                            task_delay += 1
-                        End If
+                        task_delay += 1
                     End If
                 End If
 
@@ -297,7 +295,8 @@ Public Class MyDB
             Dim res = "All " + task_num.ToString() + ", "
             res += "normal " + task_normal.ToString() + ","
             res += "delay " + task_delay.ToString() + ","
-            res += "close " + task_close.ToString() + ","
+            res += "finished " + task_finished.ToString() + ","
+            res += "close " + task_close.ToString() + ",  "
             res += "Kaison " + task_kaison.ToString() + ","
             res += "5s " + task_5s.ToString() + ","
             res += "EHS " + task_ehs.ToString() + ","
@@ -314,9 +313,9 @@ Public Class MyDB
 
     End Function
 
-    Public Function getTaskState(ByVal id As Integer, ByRef state As Integer, ByRef descript As String) As Boolean
+    Public Function getTaskStatus(ByVal id As Integer, ByRef status As String, ByRef descript As String) As Boolean
 
-        Dim myselect = "SELECT work_state, description FROM [Task] WHERE id=" + id.ToString() + ";"
+        Dim myselect = "SELECT status, description FROM [Task] WHERE id=" + id.ToString() + ";"
 
         Try
             If Not connect.State = ConnectionState.Open Then
@@ -332,7 +331,7 @@ Public Class MyDB
             End If
 
             While task.Read
-                state = task.GetInt32(0)
+                status = task.GetString(0)
                 descript = task.GetString(1)
                 Return True
             End While
@@ -348,10 +347,10 @@ Public Class MyDB
 
     End Function
 
-    Public Function setTaskState(ByVal id As Integer, ByVal worker As String, ByVal state As Integer, ByVal descript As String) As Boolean
+    Public Function setTaskStatus(ByVal id As Integer, ByVal respon As String, ByVal status As String, ByVal descript As String) As Boolean
 
-        Dim myupdate = "UPDATE [Task] SET work_state=" + state.ToString() + ", description=@descript WHERE id=" + id.ToString() + " AND worker='" + worker + "';"
-
+        Dim myupdate = "UPDATE [Task] SET status='" + status + "', description=@descript  WHERE id=" + id.ToString() + " AND responsible='" + respon + "';"
+        'update_date=@update_date
         Try
             If Not connect.State = ConnectionState.Open Then
                 Return False
@@ -359,6 +358,8 @@ Public Class MyDB
 
             Dim cmd As New SqlClient.SqlCommand(myupdate, connect)
             cmd.Parameters.AddWithValue("@descript", descript)
+            Dim update_date = Now.ToString("yyyy-MM-dd HH:mm:ss")
+            cmd.Parameters.AddWithValue("@update_date", update_date)
             cmd.ExecuteNonQuery()
 
             Return True
@@ -383,10 +384,61 @@ Public Class MyDB
 
             Dim cmd As New SqlClient.SqlCommand(myinsert, connect)
             cmd.Parameters.AddWithValue("@descript", descript)
+            Dim update_date = Now.ToString("yyyy-MM-dd HH:mm:ss")
+            cmd.Parameters.AddWithValue("@update_date", update_date)
             cmd.ExecuteNonQuery()
 
             Return True
 
+        Catch ex As Exception
+            MyLog.err(ex.ToString)
+
+        End Try
+
+        Return False
+
+    End Function
+
+    Public Function getAllTaskInfo(ByRef finish_num As Integer, ByRef delay_num As Integer, ByRef ongo_num As Integer) As Boolean
+
+        Dim myselect = "SELECT status,plan_finish_date FROM [Task];"
+
+        Try
+            If Not connect.State = ConnectionState.Open Then
+                Return False
+            End If
+
+            Dim cmd As New SqlClient.SqlCommand(myselect, connect)
+            Dim task As SqlClient.SqlDataReader = cmd.ExecuteReader()
+            Dim task_count = task.HasRows()
+
+            If Not task_count Then
+                Return False
+            End If
+
+            Dim task_close As Integer
+
+            While task.Read
+                Dim status = task.GetString(0)
+                If status = "closed" Then
+                    task_close += 1
+                ElseIf status = "finished" Then
+                    finish_num += 1
+                ElseIf status = "on-going" Or status = "new" Then
+                    Dim plan_date As DateTime = task.GetDateTime(1)
+
+                    If plan_date >= Now Then
+                        ongo_num += 1
+                    Else
+                        delay_num += 1
+                    End If
+                End If
+
+            End While
+
+            task.Close()
+
+            Return True
         Catch ex As Exception
             MyLog.err(ex.ToString)
 

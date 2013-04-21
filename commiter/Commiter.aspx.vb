@@ -39,18 +39,17 @@ Public Partial Class Commiter
 
         Dim commiter = Me.TxtUserName.Text
         Dim type = Me.DDL_Type.SelectedValue
-        Dim state = "new"
+        Dim status = "new"
         Dim create_date = Now.ToString("yyyy-MM-dd HH:mm:ss")
         Dim plan_date = Me.TB_plandate.Text + " " + Me.DDL_planhour.Text + ":" + Me.DDL_planmin.Text + ":00"
-        Dim worker = Me.DDL_worker.Text
-        Dim update_date = Now.ToString("yyyy-MM-dd HH:mm:ss")
+        Dim respon = Me.DDL_respon.Text
         Dim descript = Me.TB_comment.Text
 
         Dim db As New MyDB
-        Dim task = "'" + commiter + "','" + type + "','" + state + "'"
+        Dim task = "'" + commiter + "','" + type + "','" + status + "'"
         task += ",'" + create_date + "','" + plan_date + "'"
-        task += ",'" + worker + "','" + update_date + "',@descript"
-        Dim info = "commiter, type, state, create_date, plan_finish_date, worker, update_date, description"
+        task += ",'" + respon + "',@update_date,@descript"
+        Dim info = "commiter, type, status, create_date, plan_finish_date, responsible, update_date, description"
         If db.addTask(info, task, descript) Then
             MyLog.log(commiter + "add new task.")
         End If

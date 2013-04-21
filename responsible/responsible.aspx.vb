@@ -1,13 +1,13 @@
-Partial Public Class Worker
+Partial Public Class Responsible
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        Dim name = "tom" 'Request.QueryString("name")
+        Dim name = "tom" ' Request.QueryString("name")
         Me.TxtUserName.Text = name
 
         Dim db As New MyDB
 
-        Dim mytaskinfo = db.getTaskInfo(name, "worker")
+        Dim mytaskinfo = db.getTaskInfo(name, "responsible")
         Me.HL_tasknum.Text = mytaskinfo
 
         Dim id = Me.DDL_TaskId.SelectedValue
@@ -20,13 +20,16 @@ Partial Public Class Worker
         End If
 
         Dim id = Me.DDL_TaskId.SelectedValue
-        Dim worker = Me.TxtUserName.Text
-        Dim state = Me.DDL_state.SelectedValue
+        Dim respon = Me.TxtUserName.Text
+        Dim status = "on-going"
+        If Me.DDL_state.SelectedIndex = 1 Then
+            status = "finished"
+        End If
         Dim descript = Me.TB_comment.Text
 
         Dim db As New MyDB
-        If db.setTaskState(id, worker, state, descript) Then
-            MyLog.log(worker + "update task: " + id.ToString() + ".")
+        If db.setTaskStatus(id, respon, status, descript) Then
+            MyLog.log(respon + "update task: " + id.ToString() + ".")
         End If
 
         Response.Redirect(Request.RawUrl.ToString)
@@ -39,10 +42,10 @@ Partial Public Class Worker
 
         Dim id = Me.DDL_TaskId.SelectedValue
         Dim db As New MyDB
-        Dim state As Integer = 0
+        Dim status As String = "on-going"
         Dim descript As String = ""
-        If db.getTaskState(id, state, descript) Then
-            If state < 100 Then
+        If db.getTaskStatus(id, status, descript) Then
+            If status = "new" Or status = "on-going" Then
                 Me.DDL_state.SelectedIndex = 0
             Else
                 Me.DDL_state.SelectedIndex = 1

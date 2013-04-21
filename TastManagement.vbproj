@@ -38,6 +38,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.DataVisualization, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
@@ -74,11 +75,11 @@
     </Content>
     <Content Include="admin\taskmanage.aspx" />
     <Content Include="commiter\Commiter.aspx" />
+    <Content Include="commiter\Report.aspx" />
     <Content Include="login.aspx" />
     <Content Include="admin\usermanage.aspx" />
-    <Content Include="task\TaskReport.aspx" />
     <Content Include="Web.config" />
-    <Content Include="worker\worker.aspx" />
+    <Content Include="responsible\Responsible.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="admin\logmanage.aspx.designer.vb">
@@ -106,6 +107,13 @@
     <Compile Include="commiter\Commiter.aspx.vb">
       <SubType>ASPXCodebehind</SubType>
       <DependentUpon>Commiter.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="commiter\Report.aspx.designer.vb">
+      <DependentUpon>Report.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="commiter\Report.aspx.vb">
+      <SubType>ASPXCodebehind</SubType>
+      <DependentUpon>Report.aspx</DependentUpon>
     </Compile>
     <Compile Include="login.aspx.vb">
       <SubType>ASPXCodeBehind</SubType>
@@ -139,18 +147,11 @@
       <SubType>ASPXCodebehind</SubType>
       <DependentUpon>usermanage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="task\TaskReport.aspx.designer.vb">
-      <DependentUpon>TaskReport.aspx</DependentUpon>
+    <Compile Include="responsible\responsible.aspx.designer.vb">
+      <DependentUpon>Responsible.aspx</DependentUpon>
     </Compile>
-    <Compile Include="task\TaskReport.aspx.vb">
-      <SubType>ASPXCodebehind</SubType>
-      <DependentUpon>TaskReport.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="worker\worker.aspx.designer.vb">
-      <DependentUpon>worker.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="worker\worker.aspx.vb">
-      <DependentUpon>worker.aspx</DependentUpon>
+    <Compile Include="responsible\responsible.aspx.vb">
+      <DependentUpon>Responsible.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
   </ItemGroup>
@@ -161,9 +162,6 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="task\TaskBar.rdlc" />
-    <EmbeddedResource Include="task\TaskMatrix.rdlc" />
-    <EmbeddedResource Include="task\TaskPie.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App_Data\DataSetTask.xsc">

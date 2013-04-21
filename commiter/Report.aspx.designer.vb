@@ -14,12 +14,12 @@ Option Explicit On
 
 
 '''<summary>
-'''TaskBar class.
+'''Report class.
 '''</summary>
 '''<remarks>
 '''Auto-generated class.
 '''</remarks>
-Partial Public Class TaskBar
+Partial Public Class Report
 
     '''<summary>
     '''form1 control.
@@ -31,20 +31,11 @@ Partial Public Class TaskBar
     Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
 
     '''<summary>
-    '''RV_TaskMatrix control.
+    '''Chart1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents RV_TaskMatrix As Global.Microsoft.Reporting.WebForms.ReportViewer
-
-    '''<summary>
-    '''ODS_Task control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents ODS_Task As Global.System.Web.UI.WebControls.ObjectDataSource
+    Protected WithEvents Chart1 As Global.System.Web.UI.DataVisualization.Charting.Chart
 End Class

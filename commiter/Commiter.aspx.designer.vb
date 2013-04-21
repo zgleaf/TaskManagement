@@ -121,13 +121,13 @@ Partial Public Class Commiter
     Protected WithEvents Calendar_Plan As Global.System.Web.UI.WebControls.Calendar
 
     '''<summary>
-    '''DDL_worker control.
+    '''DDL_respon control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents DDL_worker As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents DDL_respon As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''SqlDataSourceWorker control.

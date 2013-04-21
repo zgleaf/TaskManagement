@@ -14,12 +14,12 @@ Option Explicit On
 
 
 '''<summary>
-'''Worker class.
+'''Responsible class.
 '''</summary>
 '''<remarks>
 '''Auto-generated class.
 '''</remarks>
-Partial Public Class Worker
+Partial Public Class Responsible
 
     '''<summary>
     '''form1 control.

@@ -35,11 +35,10 @@
                     SortExpression="id" />
                 <asp:BoundField DataField="commiter" HeaderText="commiter" SortExpression="commiter" />
                 <asp:BoundField DataField="type" HeaderText="type" SortExpression="type" />
-                <asp:BoundField DataField="state" HeaderText="state" SortExpression="state" />
+                <asp:BoundField DataField="status" HeaderText="status" SortExpression="status" />
                 <asp:BoundField DataField="create_date" HeaderText="create_date" SortExpression="create_date" />
                 <asp:BoundField DataField="plan_finish_date" HeaderText="plan_finish_date" SortExpression="plan_finish_date" />
-                <asp:BoundField DataField="worker" HeaderText="worker" SortExpression="worker" />
-                <asp:BoundField DataField="work_state" HeaderText="work_state" SortExpression="work_state" />
+                <asp:BoundField DataField="responsible" HeaderText="responsible" SortExpression="responsible" />
                 <asp:BoundField DataField="update_date" HeaderText="update_date" SortExpression="update_date" />
                 <asp:BoundField DataField="description" HeaderText="description" SortExpression="description" />
             </Columns>
