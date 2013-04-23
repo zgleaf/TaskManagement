@@ -40,6 +40,42 @@ Partial Public Class taskmanager
     Protected WithEvents TaskMgr As Global.System.Web.UI.WebControls.SqlDataSource
 
     '''<summary>
+    '''TB_id control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents TB_id As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''TB_commiter control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents TB_commiter As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''TB_reponse control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents TB_reponse As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Btn_Search control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Btn_Search As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
     '''TaskView control.
     '''</summary>
     '''<remarks>

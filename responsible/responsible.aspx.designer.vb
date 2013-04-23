@@ -49,24 +49,6 @@ Partial Public Class Responsible
     Protected WithEvents HL_tasknum As Global.System.Web.UI.WebControls.HyperLink
 
     '''<summary>
-    '''GridViewMyTask control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents GridViewMyTask As Global.System.Web.UI.WebControls.GridView
-
-    '''<summary>
-    '''SqlDataSourceMyTask control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents SqlDataSourceMyTask As Global.System.Web.UI.WebControls.SqlDataSource
-
-    '''<summary>
     '''DDL_TaskId control.
     '''</summary>
     '''<remarks>
@@ -83,6 +65,15 @@ Partial Public Class Responsible
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents SqlDataSourceTask As Global.System.Web.UI.WebControls.SqlDataSource
+
+    '''<summary>
+    '''TB_description control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents TB_description As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''DDL_state control.
@@ -110,4 +101,22 @@ Partial Public Class Responsible
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Btn_Update As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''SqlDataSourceMyTask control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents SqlDataSourceMyTask As Global.System.Web.UI.WebControls.SqlDataSource
+
+    '''<summary>
+    '''GridViewMyTask control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents GridViewMyTask As Global.System.Web.UI.WebControls.GridView
 End Class

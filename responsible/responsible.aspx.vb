@@ -2,7 +2,7 @@ Partial Public Class Responsible
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        Dim name = "tom" ' Request.QueryString("name")
+        Dim name = Request.QueryString("name")
         Me.TxtUserName.Text = name
 
         Dim db As New MyDB
@@ -10,9 +10,15 @@ Partial Public Class Responsible
         Dim mytaskinfo = db.getTaskInfo(name, "responsible")
         Me.HL_tasknum.Text = mytaskinfo
 
-        Dim id = Me.DDL_TaskId.SelectedValue
     End Sub
 
+    Protected Sub Page_InitComplete(ByVal sender As Object, ByVal e As System.EventArgs) Handles DDL_TaskId.DataBound
+        If Me.DDL_TaskId.Text <> "" Then
+            Dim id = Me.DDL_TaskId.SelectedValue
+
+            updateTaskId(id)
+        End If
+    End Sub
 
     Protected Sub Btn_Update_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Btn_Update.Click
         If Me.TxtUserName.Text = "" Then
@@ -25,10 +31,10 @@ Partial Public Class Responsible
         If Me.DDL_state.SelectedIndex = 1 Then
             status = "finished"
         End If
-        Dim descript = Me.TB_comment.Text
+        Dim comment = Me.TB_comment.Text
 
         Dim db As New MyDB
-        If db.setTaskStatus(id, respon, status, descript) Then
+        If db.setTaskStatus(id, respon, status, comment) Then
             MyLog.log(respon + "update task: " + id.ToString() + ".")
         End If
 
@@ -36,33 +42,32 @@ Partial Public Class Responsible
     End Sub
 
     Protected Sub DDL_TaskId_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DDL_TaskId.SelectedIndexChanged
-        If Me.DDL_TaskId.SelectedValue = "" Then
-            Return
+        If Me.DDL_TaskId.Text <> "" Then
+            Dim id = Me.DDL_TaskId.SelectedValue
+            updateTaskId(id)
         End If
+    End Sub
 
-        Dim id = Me.DDL_TaskId.SelectedValue
+    Protected Sub updateTaskId(ByVal id As Integer)
         Dim db As New MyDB
         Dim status As String = "on-going"
         Dim descript As String = ""
-        If db.getTaskStatus(id, status, descript) Then
-            If status = "new" Or status = "on-going" Then
+        Dim comment As String = ""
+        If db.getTaskStatus(id, status, descript, comment) Then
+            If status.ToLower() = "new" Or status.ToLower() = "on-going" Then
                 Me.DDL_state.SelectedIndex = 0
             Else
                 Me.DDL_state.SelectedIndex = 1
             End If
 
-            Me.TB_comment.Text = descript
+            Me.TB_description.Text = descript
+            Me.TB_comment.Text = comment
 
         Else
             Me.DDL_state.SelectedIndex = 0
-            Me.TB_comment.Text = descript
+            Me.TB_description.Text = descript
+            Me.TB_comment.Text = comment
 
         End If
-    End Sub
-
-    Protected Sub DDL_state_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DDL_state.SelectedIndexChanged
-
-        Dim state = Me.DDL_state.SelectedValue
-
     End Sub
 End Class

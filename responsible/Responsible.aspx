@@ -14,30 +14,10 @@
         <br />
         my tasks :
         <asp:HyperLink ID="HL_tasknum" runat="server">[HL_tasknum]</asp:HyperLink><br />
-        <asp:GridView ID="GridViewMyTask" runat="server" AllowPaging="True" AutoGenerateColumns="False"
-            DataKeyNames="id" DataSourceID="SqlDataSourceMyTask">
-            <Columns>
-                <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True"
-                    SortExpression="id" />
-                <asp:BoundField DataField="commiter" HeaderText="commiter" SortExpression="commiter" />
-                <asp:BoundField DataField="type" HeaderText="type" SortExpression="type" />
-                <asp:BoundField DataField="status" HeaderText="status" SortExpression="status" />
-                <asp:BoundField DataField="create_date" HeaderText="create_date" SortExpression="create_date" />
-                <asp:BoundField DataField="plan_finish_date" HeaderText="plan_finish_date" SortExpression="plan_finish_date" />
-                <asp:BoundField DataField="responsible" HeaderText="responsible" SortExpression="responsible" />
-                <asp:BoundField DataField="update_date" HeaderText="update_date" SortExpression="update_date" />
-                <asp:BoundField DataField="description" HeaderText="description" SortExpression="description" />
-            </Columns>
-        </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSourceMyTask" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
-            SelectCommand="SELECT id, commiter, type, status, create_date, plan_finish_date, responsible, update_date, description FROM Task WHERE (responsible = @responsible)">
-            <SelectParameters>
-                <asp:ControlParameter ControlID="TxtUserName" Name="responsible" PropertyName="Text" />
-            </SelectParameters>
-        </asp:SqlDataSource>
+        &nbsp;
         <br />
         Id:
-        <asp:DropDownList ID="DDL_TaskId" runat="server" DataSourceID="SqlDataSourceTask" DataTextField="id" DataValueField="id" AutoPostBack="True">
+        <asp:DropDownList ID="DDL_TaskId" runat="server" DataSourceID="SqlDataSourceTask" DataTextField="id" DataValueField="id" AutoPostBack="True" Width="127px">
         </asp:DropDownList><asp:SqlDataSource ID="SqlDataSourceTask" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
             SelectCommand="SELECT id FROM Task WHERE (responsible = @responsible) AND (status <> 'close')">
             <SelectParameters>
@@ -45,13 +25,37 @@
             </SelectParameters>
         </asp:SqlDataSource>
         <br />
-        Staus:<asp:DropDownList ID="DDL_state" runat="server">
+        <asp:TextBox ID="TB_description" runat="server" Height="80px" ReadOnly="True" TextMode="MultiLine"
+            Width="578px"></asp:TextBox><br />
+        Staus:<asp:DropDownList ID="DDL_state" runat="server" Width="85px">
             <asp:ListItem Value="0">未完成</asp:ListItem>
             <asp:ListItem Value="1">完成</asp:ListItem>
         </asp:DropDownList><br />
-        <asp:TextBox ID="TB_comment" runat="server" Height="83px" TextMode="MultiLine" Width="256px"></asp:TextBox><br />
+        <asp:TextBox ID="TB_comment" runat="server" Height="83px" TextMode="MultiLine" Width="576px"></asp:TextBox><br />
+        <asp:Button ID="Btn_Update" runat="server" Text="Update" Width="120px" />
+        <asp:SqlDataSource ID="SqlDataSourceMyTask" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
+            SelectCommand="SELECT id, type, description, status, plan_finish_date, commiter, create_date, responsible, update_date, comment FROM Task WHERE (responsible = @responsible)">
+            <SelectParameters>
+                <asp:ControlParameter ControlID="TxtUserName" Name="responsible" PropertyName="Text" />
+            </SelectParameters>
+        </asp:SqlDataSource>
         <br />
-        <asp:Button ID="Btn_Update" runat="server" Text="Update" />
+        <asp:GridView ID="GridViewMyTask" runat="server" AllowPaging="True" AutoGenerateColumns="False"
+            DataKeyNames="id" DataSourceID="SqlDataSourceMyTask">
+            <Columns>
+                <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True"
+                    SortExpression="id" />
+                <asp:BoundField DataField="type" HeaderText="type" SortExpression="type" />
+                <asp:BoundField DataField="description" HeaderText="description" SortExpression="description" />
+                <asp:BoundField DataField="status" HeaderText="status" SortExpression="status" />
+                <asp:BoundField DataField="plan_finish_date" HeaderText="plan_finish_date" SortExpression="plan_finish_date" />
+                <asp:BoundField DataField="commiter" HeaderText="commiter" SortExpression="commiter" />
+                <asp:BoundField DataField="create_date" HeaderText="create_date" SortExpression="create_date" />
+                <asp:BoundField DataField="responsible" HeaderText="responsible" SortExpression="responsible" />
+                <asp:BoundField DataField="update_date" HeaderText="update_date" SortExpression="update_date" />
+                <asp:BoundField DataField="comment" HeaderText="comment" SortExpression="comment" />
+            </Columns>
+        </asp:GridView>
     
     </div>
     </form>
