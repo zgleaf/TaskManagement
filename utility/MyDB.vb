@@ -475,4 +475,63 @@ Public Class MyDB
         Return False
 
     End Function
+
+    Public Function getAllTaskInfo(ByVal tasktype As String(), ByVal tasknum As Integer(,)) As Boolean
+
+        Dim myselect = "SELECT type,status,plan_finish_date FROM [Task];"
+
+        Try
+            If Not connect.State = ConnectionState.Open Then
+                Return False
+            End If
+
+            Dim cmd As New SqlClient.SqlCommand(myselect, connect)
+            Dim task As SqlClient.SqlDataReader = cmd.ExecuteReader()
+            Dim task_count = task.HasRows()
+
+            If Not task_count Then
+                Return False
+            End If
+
+            Dim task_num As Integer
+            Dim task_close As Integer
+
+            While task.Read
+                Dim type = task.GetString(0)
+                For i As Integer = 0 To tasktype.Length
+
+                    If type = tasktype(i) Then
+
+                        Dim status As String = task.GetString(1)
+                        If status.ToLower() = "closed" Then
+                            task_close += 1
+                        ElseIf status.ToLower() = "finished" Then
+                            tasknum(i, 0) += 1
+                        ElseIf status.ToLower() = "on-going" Or status.ToLower() = "new" Then
+                            Dim plan_date As DateTime = task.GetDateTime(2)
+
+                            If plan_date >= Now Then
+                                tasknum(i, 2) += 1
+                            Else
+                                tasknum(i, 1) += 1
+                            End If
+                        End If
+
+                        Exit For
+                    End If
+                Next
+                task_num += 1
+            End While
+
+            task.Close()
+
+            Return True
+        Catch ex As Exception
+            MyLog.err(ex.ToString)
+
+        End Try
+
+        Return False
+
+    End Function
 End Class
