@@ -49,22 +49,13 @@ Partial Public Class Commiter
     Protected WithEvents HL_tasknum As Global.System.Web.UI.WebControls.HyperLink
 
     '''<summary>
-    '''GridViewMyTask control.
+    '''TB_descript control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents GridViewMyTask As Global.System.Web.UI.WebControls.GridView
-
-    '''<summary>
-    '''SqlDataSourceMyTask control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents SqlDataSourceMyTask As Global.System.Web.UI.WebControls.SqlDataSource
+    Protected WithEvents TB_descript As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''DDL_Type control.
@@ -76,6 +67,15 @@ Partial Public Class Commiter
     Protected WithEvents DDL_Type As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
+    '''DDL_respon control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DDL_respon As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
     '''SqlDataSourceTask control.
     '''</summary>
     '''<remarks>
@@ -83,6 +83,15 @@ Partial Public Class Commiter
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents SqlDataSourceTask As Global.System.Web.UI.WebControls.SqlDataSource
+
+    '''<summary>
+    '''SqlDataSourceWorker control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents SqlDataSourceWorker As Global.System.Web.UI.WebControls.SqlDataSource
 
     '''<summary>
     '''TB_plandate control.
@@ -112,33 +121,6 @@ Partial Public Class Commiter
     Protected WithEvents DDL_planmin As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''Calendar_Plan control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Calendar_Plan As Global.System.Web.UI.WebControls.Calendar
-
-    '''<summary>
-    '''DDL_respon control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents DDL_respon As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''SqlDataSourceWorker control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents SqlDataSourceWorker As Global.System.Web.UI.WebControls.SqlDataSource
-
-    '''<summary>
     '''TB_comment control.
     '''</summary>
     '''<remarks>
@@ -155,4 +137,22 @@ Partial Public Class Commiter
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Btn_Commit As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''GridViewMyTask control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents GridViewMyTask As Global.System.Web.UI.WebControls.GridView
+
+    '''<summary>
+    '''SqlDataSourceMyTask control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents SqlDataSourceMyTask As Global.System.Web.UI.WebControls.SqlDataSource
 End Class

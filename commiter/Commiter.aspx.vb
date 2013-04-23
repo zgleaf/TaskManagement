@@ -2,7 +2,7 @@ Public Partial Class Commiter
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        Dim name = Request.QueryString("name")
+        Dim name = "Jason" 'Request.QueryString("name")
         Me.TxtUserName.Text = name
 
         Dim db As New MyDB
@@ -10,25 +10,17 @@ Public Partial Class Commiter
         Dim mytaskinfo = db.getTaskInfo(name, "commiter")
         Me.HL_tasknum.Text = mytaskinfo
 
-        Me.TB_plandate.Text = Now.ToShortDateString()
-        Dim hour = Now.Hour
-        If hour < 8 Then
-            hour = 8
-        End If
-        If hour > 18 Then
-            hour = 18
-        End If
-        Me.DDL_planhour.SelectedValue = hour
-
         If Not Page.IsPostBack Then
-            Me.TB_plandate.Attributes.Add("onfocus", "javascript:document.getElementById('divpplandate').style.display='block'")
+            Me.TB_plandate.Text = Now.ToShortDateString()
+            Dim hour = Now.Hour
+            If hour < 8 Then
+                hour = 8
+            End If
+            If hour > 18 Then
+                hour = 18
+            End If
+            Me.DDL_planhour.SelectedValue = hour
         End If
-
-    End Sub
-
-    Protected Sub Calendar_Plan_SelectionChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Calendar_Plan.SelectionChanged
-
-        Me.TB_plandate.Text = Me.Calendar_Plan.SelectedDate.ToShortDateString()
 
     End Sub
 
@@ -39,18 +31,19 @@ Public Partial Class Commiter
 
         Dim commiter = Me.TxtUserName.Text
         Dim type = Me.DDL_Type.SelectedValue
-        Dim status = "new"
+        Dim status = "on-going"
         Dim create_date = Now.ToString("yyyy-MM-dd HH:mm:ss")
         Dim plan_date = Me.TB_plandate.Text + " " + Me.DDL_planhour.Text + ":" + Me.DDL_planmin.Text + ":00"
         Dim respon = Me.DDL_respon.Text
-        Dim descript = Me.TB_comment.Text
+        Dim descript = Me.TB_descript.Text
+        Dim comment = Me.TB_comment.Text
 
         Dim db As New MyDB
         Dim task = "'" + commiter + "','" + type + "','" + status + "'"
         task += ",'" + create_date + "','" + plan_date + "'"
-        task += ",'" + respon + "',@update_date,@descript"
-        Dim info = "commiter, type, status, create_date, plan_finish_date, responsible, update_date, description"
-        If db.addTask(info, task, descript) Then
+        task += ",'" + respon + "',@update_date,@description,@comment"
+        Dim info = "commiter, type, status, create_date, plan_finish_date, responsible, update_date, description, comment"
+        If db.addTask(info, task, descript, comment) Then
             MyLog.log(commiter + "add new task.")
         End If
 
