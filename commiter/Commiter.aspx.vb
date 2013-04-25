@@ -11,7 +11,7 @@ Public Partial Class Commiter
         Me.HL_tasknum.Text = mytaskinfo
 
         If Not Page.IsPostBack Then
-            Me.TB_plandate.Text = Now.ToShortDateString()
+            Me.TB_duedate.Text = Now.ToShortDateString()
             Dim hour = Now.Hour
             If hour < 8 Then
                 hour = 8
@@ -19,7 +19,7 @@ Public Partial Class Commiter
             If hour > 18 Then
                 hour = 18
             End If
-            Me.DDL_planhour.SelectedValue = hour
+            Me.DDL_duehour.SelectedValue = hour
         End If
 
     End Sub
@@ -33,16 +33,16 @@ Public Partial Class Commiter
         Dim type = Me.DDL_Type.SelectedValue
         Dim status = "on-going"
         Dim create_date = Now.ToString("yyyy-MM-dd HH:mm:ss")
-        Dim plan_date = Me.TB_plandate.Text + " " + Me.DDL_planhour.Text + ":" + Me.DDL_planmin.Text + ":00"
+        Dim due_date = Me.TB_duedate.Text + " " + Me.DDL_duehour.Text + ":" + Me.DDL_duemin.Text + ":00"
         Dim respon = Me.DDL_respon.Text
         Dim descript = Me.TB_descript.Text
         Dim comment = Me.TB_comment.Text
 
         Dim db As New MyDB
         Dim task = "'" + commiter + "','" + type + "','" + status + "'"
-        task += ",'" + create_date + "','" + plan_date + "'"
+        task += ",'" + create_date + "','" + due_date + "'"
         task += ",'" + respon + "',@update_date,@description,@comment"
-        Dim info = "commiter, type, status, create_date, plan_finish_date, responsible, update_date, description, comment"
+        Dim info = "commiter, type, status, create_date, due_date, responsible, update_date, description, comment"
         If db.addTask(info, task, descript, comment) Then
             MyLog.log(commiter + "add new task.")
         End If

@@ -10,7 +10,7 @@
     <form id="form1" runat="server">
     <div>
         <asp:SqlDataSource ID="TaskMgr" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
-            SelectCommand="SELECT * FROM [Task]" DeleteCommand="DELETE FROM Task WHERE (id = @id)" UpdateCommand="UPDATE Task SET commiter = @commiter, type = @type, state = @state, create_date = @create_date, plan_finish_date = @plan_finish_date, worker = @worker, work_state = @work_state, update_date = @update_date, description = @description WHERE (id = @id)">
+            SelectCommand="SELECT * FROM [Task]" DeleteCommand="DELETE FROM Task WHERE (id = @id)" UpdateCommand="UPDATE Task SET commiter = @commiter, type = @type, state = @state, create_date = @create_date, due_date = @due_date, worker = @worker, work_state = @work_state, update_date = @update_date, description = @description WHERE (id = @id)">
             <DeleteParameters>
                 <asp:Parameter Name="id" />
             </DeleteParameters>
@@ -19,7 +19,7 @@
                 <asp:Parameter Name="type" />
                 <asp:Parameter Name="state" />
                 <asp:Parameter Name="create_date" />
-                <asp:Parameter Name="plan_finish_date" />
+                <asp:Parameter Name="due_date" />
                 <asp:Parameter Name="worker" />
                 <asp:Parameter Name="work_state" />
                 <asp:Parameter Name="update_date" />
@@ -44,7 +44,7 @@
                 <asp:BoundField DataField="create_date" HeaderText="create_date" SortExpression="create_date" />
                 <asp:BoundField DataField="responsible" HeaderText="responsible" SortExpression="responsible" />
                 <asp:BoundField DataField="department" HeaderText="department" SortExpression="department" />
-                <asp:BoundField DataField="plan_finish_date" HeaderText="plan_finish_date" SortExpression="plan_finish_date" />
+                <asp:BoundField DataField="due_date" HeaderText="due_date" SortExpression="due_date" />
                 <asp:BoundField DataField="status" HeaderText="status" SortExpression="status" />
                 <asp:BoundField DataField="type" HeaderText="type" SortExpression="type" />
                 <asp:BoundField DataField="comment" HeaderText="comment" SortExpression="comment" />

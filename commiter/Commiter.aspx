@@ -36,8 +36,8 @@
         </asp:SqlDataSource>
         <br />
         DueDate&nbsp;
-        <asp:TextBox ID="TB_plandate" runat="server" Width="68px"></asp:TextBox>
-        <asp:DropDownList ID="DDL_planhour" runat="server">
+        <asp:TextBox ID="TB_duedate" runat="server" Width="68px"></asp:TextBox>
+        <asp:DropDownList ID="DDL_duehour" runat="server">
             <asp:ListItem>8</asp:ListItem>
             <asp:ListItem>9</asp:ListItem>
             <asp:ListItem>10</asp:ListItem>
@@ -49,7 +49,7 @@
             <asp:ListItem>16</asp:ListItem>
             <asp:ListItem>17</asp:ListItem>
             <asp:ListItem>18</asp:ListItem>
-        </asp:DropDownList>:<asp:DropDownList ID="DDL_planmin" runat="server">
+        </asp:DropDownList>:<asp:DropDownList ID="DDL_duemin" runat="server">
             <asp:ListItem>00</asp:ListItem>
             <asp:ListItem>10</asp:ListItem>
             <asp:ListItem>20</asp:ListItem>
@@ -71,7 +71,7 @@
                 <asp:BoundField DataField="create_date" HeaderText="create_date" SortExpression="create_date" />
                 <asp:BoundField DataField="responsible" HeaderText="responsible" SortExpression="responsible" />
                 <asp:BoundField DataField="department" HeaderText="department" SortExpression="department" />
-                <asp:BoundField DataField="plan_finish_date" HeaderText="plan_finish_date" SortExpression="plan_finish_date" />
+                <asp:BoundField DataField="due_date" HeaderText="due_date" SortExpression="due_date" />
                 <asp:BoundField DataField="status" HeaderText="status" SortExpression="status" />
                 <asp:BoundField DataField="type" HeaderText="type" SortExpression="type" />
                 <asp:BoundField DataField="comment" HeaderText="comment" SortExpression="comment" />

@@ -241,7 +241,7 @@ Public Class MyDB
 
     Public Function getTaskInfo(ByVal name As String, ByVal perm As String) As String
 
-        Dim myselect = "SELECT type,status,plan_finish_date FROM [Task] WHERE " + perm + "='" + name + "';"
+        Dim myselect = "SELECT type,status,due_date FROM [Task] WHERE " + perm + "='" + name + "';"
 
         Try
             If Not connect.State = ConnectionState.Open Then
@@ -403,7 +403,7 @@ Public Class MyDB
 
     Public Function getAllTaskInfo(ByRef info As String, ByRef task_finished As Integer, ByRef task_delay As Integer, ByRef task_ongo As Integer) As Boolean
 
-        Dim myselect = "SELECT type,status,plan_finish_date FROM [Task];"
+        Dim myselect = "SELECT type,status,due_date FROM [Task];"
 
         Try
             If Not connect.State = ConnectionState.Open Then
@@ -478,7 +478,7 @@ Public Class MyDB
 
     Public Function getAllTaskInfo(ByVal tasktype As String(), ByVal tasknum As Integer(,)) As Boolean
 
-        Dim myselect = "SELECT type,status,plan_finish_date FROM [Task];"
+        Dim myselect = "SELECT type,status,due_date FROM [Task];"
 
         Try
             If Not connect.State = ConnectionState.Open Then

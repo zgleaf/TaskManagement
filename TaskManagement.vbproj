@@ -97,11 +97,6 @@
       <SubType>ASPXCodebehind</SubType>
       <DependentUpon>taskmanage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_Data\DataSetTask.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataSetTask.xsd</DependentUpon>
-    </Compile>
     <Compile Include="commiter\Commiter.aspx.designer.vb">
       <DependentUpon>Commiter.aspx</DependentUpon>
     </Compile>
@@ -165,17 +160,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App_Data\DataSetTask.xsc">
-      <DependentUpon>DataSetTask.xsd</DependentUpon>
-    </None>
-    <None Include="App_Data\DataSetTask.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSetTask.Designer.vb</LastGenOutput>
-    </None>
-    <None Include="App_Data\DataSetTask.xss">
-      <DependentUpon>DataSetTask.xsd</DependentUpon>
-    </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>

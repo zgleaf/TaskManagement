@@ -94,31 +94,31 @@ Partial Public Class Commiter
     Protected WithEvents SqlDataSourceWorker As Global.System.Web.UI.WebControls.SqlDataSource
 
     '''<summary>
-    '''TB_plandate control.
+    '''TB_duedate control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TB_plandate As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents TB_duedate As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''DDL_planhour control.
+    '''DDL_duehour control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents DDL_planhour As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents DDL_duehour As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''DDL_planmin control.
+    '''DDL_duemin control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents DDL_planmin As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents DDL_duemin As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''TB_comment control.
