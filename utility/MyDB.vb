@@ -3,7 +3,22 @@ Public Class MyDB
     Public Shared ConnectString As String = My.Resources.MyConnectString.ToString()
     Private connect As SqlClient.SqlConnection
 
+    Private m_name As String = ""
+    Private m_perm As String = ""
+
     Sub New()
+        Try
+            connect = New SqlClient.SqlConnection(ConnectString)
+            connect.Open()
+
+        Catch ex As Exception
+            MyLog.err(ex.ToString)
+        End Try
+    End Sub
+
+    Sub New(ByVal name As String, ByVal perm As String)
+        m_name = name
+        m_perm = perm
         Try
             connect = New SqlClient.SqlConnection(ConnectString)
             connect.Open()
@@ -404,6 +419,9 @@ Public Class MyDB
     Public Function getAllTaskInfo(ByRef info As String, ByRef task_finished As Integer, ByRef task_delay As Integer, ByRef task_ongo As Integer) As Boolean
 
         Dim myselect = "SELECT type,status,due_date FROM [Task];"
+        If (m_name <> "" And m_perm <> "") Then
+            myselect = "SELECT type,status,due_date FROM [Task] WHERE " + m_perm + "='" + m_name + "';"
+        End If
 
         Try
             If Not connect.State = ConnectionState.Open Then
@@ -479,6 +497,9 @@ Public Class MyDB
     Public Function getAllTaskInfo(ByVal tasktype As String(), ByVal tasknum As Integer(,)) As Boolean
 
         Dim myselect = "SELECT type,status,due_date FROM [Task];"
+        If (m_name <> "" And m_perm <> "") Then
+            myselect = "SELECT type,status,due_date FROM [Task] WHERE " + m_perm + "='" + m_name + "';"
+        End If
 
         Try
             If Not connect.State = ConnectionState.Open Then

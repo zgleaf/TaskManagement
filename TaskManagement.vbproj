@@ -75,6 +75,8 @@
     </Content>
     <Content Include="admin\taskmanage.aspx" />
     <Content Include="commiter\Commiter.aspx" />
+    <Content Include="commiter\Report.aspx" />
+    <Content Include="commiter\Responsible.aspx" />
     <Content Include="manager\Report.aspx" />
     <Content Include="index.htm" />
     <Content Include="login.aspx" />
@@ -103,6 +105,20 @@
     <Compile Include="commiter\Commiter.aspx.vb">
       <SubType>ASPXCodebehind</SubType>
       <DependentUpon>Commiter.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="commiter\Report.aspx.designer.vb">
+      <DependentUpon>Report.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="commiter\Report.aspx.vb">
+      <SubType>ASPXCodebehind</SubType>
+      <DependentUpon>Report.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="commiter\responsible.aspx.designer.vb">
+      <DependentUpon>Responsible.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="commiter\responsible.aspx.vb">
+      <DependentUpon>Responsible.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="manager\Report.aspx.designer.vb">
       <DependentUpon>Report.aspx</DependentUpon>

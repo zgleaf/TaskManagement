@@ -9,6 +9,12 @@
 <body>
     <form id="form1" runat="server">
     <div>
+        <asp:LinkButton ID="LB_Report" runat="server">Report</asp:LinkButton>
+        <asp:LinkButton ID="LB_Reponse" runat="server">Reponse</asp:LinkButton>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+        <asp:LinkButton ID="LB_Logout" runat="server">Logout</asp:LinkButton><br />
+        <br />
         Commiter :
         <asp:Label ID="TxtUserName" runat="server"></asp:Label><br />
         my tasks :
@@ -57,6 +63,7 @@
             <asp:ListItem>40</asp:ListItem>
             <asp:ListItem>50</asp:ListItem>
         </asp:DropDownList><br />
+        Commit<br />
         <asp:TextBox ID="TB_comment" runat="server" Height="83px" TextMode="MultiLine" Width="256px"></asp:TextBox><br />
         <asp:Button ID="Btn_Commit" runat="server" Text="Commit" Width="131px" />
         <br />

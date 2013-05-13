@@ -31,6 +31,33 @@ Partial Public Class Commiter
     Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
 
     '''<summary>
+    '''LB_Report control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents LB_Report As Global.System.Web.UI.WebControls.LinkButton
+
+    '''<summary>
+    '''LB_Reponse control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents LB_Reponse As Global.System.Web.UI.WebControls.LinkButton
+
+    '''<summary>
+    '''LB_Logout control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents LB_Logout As Global.System.Web.UI.WebControls.LinkButton
+
+    '''<summary>
     '''TxtUserName control.
     '''</summary>
     '''<remarks>

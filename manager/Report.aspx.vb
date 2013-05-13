@@ -57,26 +57,34 @@ Partial Public Class Report
                 series.Color = taskcolor(st)
                 series.BorderWidth = 2
                 series.ShadowOffset = 1
-                series.IsVisibleInLegend = False
+                series.IsVisibleInLegend = True
                 series.IsValueShownAsLabel = True
                 series.MarkerStyle = MarkerStyle.Diamond
                 series.MarkerSize = 8
                 For i As Integer = 0 To tasktype.Length - 1
                     series.Points.AddXY(tasktype(i), tasknum(i, st))
                 Next
+                series.ToolTip = "#VALX: #VALY"
+                series.PostBackValue = "#INDEX"
+                series.LegendPostBackValue = "#INDEX"
                 ChartType.Series.Add(series)
             Next
         End If
 
         '设置坐标轴
-        ChartType.ChartAreas(0).AxisX.LineColor = Color.Blue
-        ChartType.ChartAreas(0).AxisY.LineColor = Color.Blue
-        ChartType.ChartAreas(0).AxisX.LineWidth = 2
-        ChartType.ChartAreas(0).AxisY.LineWidth = 2
-        ChartType.ChartAreas(0).AxisY.Title = "Analysis of status-by Type"
+        ChartType.ChartAreas(0).AxisX.LineColor = Color.Black
+        ChartType.ChartAreas(0).AxisY.LineColor = Color.Black
+        ChartType.ChartAreas(0).AxisX.LineWidth = 1.5
+        ChartType.ChartAreas(0).AxisY.LineWidth = 1.5
+        ChartType.ChartAreas(0).AxisY.Title = "Task"
         '设置网格线
-        ChartType.ChartAreas(0).AxisX.MajorGrid.LineColor = Color.Blue
-        ChartType.ChartAreas(0).AxisY.MajorGrid.LineColor = Color.Blue
+        'ChartType.ChartAreas(0).AxisX.MajorGrid.LineColor = Color.Blue
+        'ChartType.ChartAreas(0).AxisY.MajorGrid.LineColor = Color.Blue
+
+        ChartType.Width = 600
+        ChartType.Height = 400
+
+        ChartType.DataBind()
     End Sub
 
 

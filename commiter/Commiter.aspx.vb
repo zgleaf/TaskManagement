@@ -2,7 +2,7 @@ Public Partial Class Commiter
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        Dim name = "Jason" 'Request.QueryString("name")
+        Dim name = Request.QueryString("name")
         Me.TxtUserName.Text = name
 
         Dim db As New MyDB
@@ -48,5 +48,20 @@ Public Partial Class Commiter
         End If
 
         Response.Redirect(Request.RawUrl.ToString)
+    End Sub
+
+    Protected Sub LB_Report_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LB_Report.Click
+        Dim name = Me.TxtUserName.Text
+        Response.Redirect("Report.aspx?name=" + name)
+    End Sub
+
+    Protected Sub LB_Reponse_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LB_Reponse.Click
+        Dim name = Me.TxtUserName.Text
+        Response.Redirect("Responsible.aspx?name=" + name)
+
+    End Sub
+
+    Protected Sub LB_Logout_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LB_Logout.Click
+        Response.Redirect("..\login.aspx")
     End Sub
 End Class
