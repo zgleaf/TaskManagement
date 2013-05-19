@@ -49,6 +49,15 @@ Partial Public Class Responsible1
     Protected WithEvents LB_Commit As Global.System.Web.UI.WebControls.LinkButton
 
     '''<summary>
+    '''LB_All control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents LB_All As Global.System.Web.UI.WebControls.LinkButton
+
+    '''<summary>
     '''LB_Logout control.
     '''</summary>
     '''<remarks>

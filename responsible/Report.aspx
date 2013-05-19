@@ -1,4 +1,4 @@
-<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="Report.aspx.vb" Inherits="TastManagement.Report1" %>
+<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="Report.aspx.vb" Inherits="TastManagement.Report2" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -9,38 +9,14 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <asp:LinkButton ID="LB_Commit" runat="server">MyCommit</asp:LinkButton>
         <asp:LinkButton ID="LB_Reponse" runat="server">MyReponsible</asp:LinkButton>
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-        &nbsp; <asp:LinkButton ID="LB_All" runat="server">AllTasks</asp:LinkButton>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<asp:LinkButton ID="LB_All" runat="server">AllTasks</asp:LinkButton>
         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
         <asp:LinkButton ID="LB_Logout" runat="server">Logout</asp:LinkButton><br />
         <br />
         <asp:Label ID="Label1" runat="server" Text="Name"></asp:Label>:
         <asp:Label ID="TxtUserName" runat="server"></asp:Label><br />
-        Commit Task:
-        <asp:Label ID="TxtCommitTask" runat="server"></asp:Label><br />
-        <asp:Chart ID="ChartCommitPie" runat="server">
-            <Series>
-                <asp:Series ChartArea="ChartArea1" ChartType="Pie" Name="Series1">
-                </asp:Series>
-            </Series>
-            <ChartAreas>
-                <asp:ChartArea Name="ChartArea1">
-                </asp:ChartArea>
-            </ChartAreas>
-        </asp:Chart>
-        &nbsp;<asp:Chart ID="ChartCommitBar" runat="server">
-            <Series>
-                <asp:Series ChartArea="ChartArea1" Name="Series1">
-                </asp:Series>
-            </Series>
-            <ChartAreas>
-                <asp:ChartArea Name="ChartArea1">
-                </asp:ChartArea>
-            </ChartAreas>
-        </asp:Chart>
-        <br />
         Responsible Task:
         <asp:Label ID="TxtReponseTask" runat="server"></asp:Label><br />
         <br />

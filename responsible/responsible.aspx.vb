@@ -70,4 +70,17 @@ Partial Public Class Responsible
 
         End If
     End Sub
+
+    Protected Sub LB_Report_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LB_Report.Click
+        Dim name = Me.TxtUserName.Text
+        Response.Redirect("Responsible.aspx?name=" + name)
+    End Sub
+
+    Protected Sub LB_All_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LB_All.Click
+        Response.Redirect("..\manager\Report.aspx")
+    End Sub
+
+    Protected Sub LB_Logout_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LB_Logout.Click
+        Response.Redirect("..\manager\login.aspx")
+    End Sub
 End Class

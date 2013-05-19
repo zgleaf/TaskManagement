@@ -33,7 +33,7 @@ Partial Public Class _Default
 
         Dim type = db.getUserType(name)
         If type = "commiter" Then
-            Response.Redirect("commiter/Commiter.aspx?name=" + name)
+            Response.Redirect("commiter/Report.aspx?name=" + name)
         ElseIf type = "responsible" Then
             Response.Redirect("responsible/Responsible.aspx?name=" + name)
         ElseIf type = "admin" Then

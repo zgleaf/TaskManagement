@@ -9,9 +9,14 @@
 <body>
     <form id="form1" runat="server">
     <div>
+        <asp:LinkButton ID="LB_Report" runat="server">MyReport</asp:LinkButton>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        <asp:LinkButton ID="LB_All" runat="server">AllTasks</asp:LinkButton>
+        &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp;<asp:LinkButton ID="LB_Logout" runat="server">Logout</asp:LinkButton><br />
+        <br />
         Responsible :
         <asp:Label ID="TxtUserName" runat="server"></asp:Label><br />
-        <br />
         my tasks :
         <asp:HyperLink ID="HL_tasknum" runat="server">[HL_tasknum]</asp:HyperLink><br />
         &nbsp;

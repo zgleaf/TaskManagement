@@ -64,4 +64,8 @@ Public Partial Class Commiter
     Protected Sub LB_Logout_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LB_Logout.Click
         Response.Redirect("..\login.aspx")
     End Sub
+
+    Protected Sub LB_All_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LB_All.Click
+        Response.Redirect("..\manager\Report.aspx")
+    End Sub
 End Class

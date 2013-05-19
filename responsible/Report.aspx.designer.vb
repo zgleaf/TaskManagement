@@ -14,12 +14,12 @@ Option Explicit On
 
 
 '''<summary>
-'''Responsible class.
+'''Report2 class.
 '''</summary>
 '''<remarks>
 '''Auto-generated class.
 '''</remarks>
-Partial Public Class Responsible
+Partial Public Class Report2
 
     '''<summary>
     '''form1 control.
@@ -31,13 +31,13 @@ Partial Public Class Responsible
     Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
 
     '''<summary>
-    '''LB_Report control.
+    '''LB_Reponse control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents LB_Report As Global.System.Web.UI.WebControls.LinkButton
+    Protected WithEvents LB_Reponse As Global.System.Web.UI.WebControls.LinkButton
 
     '''<summary>
     '''LB_All control.
@@ -58,6 +58,15 @@ Partial Public Class Responsible
     Protected WithEvents LB_Logout As Global.System.Web.UI.WebControls.LinkButton
 
     '''<summary>
+    '''Label1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Label1 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''TxtUserName control.
     '''</summary>
     '''<remarks>
@@ -67,83 +76,29 @@ Partial Public Class Responsible
     Protected WithEvents TxtUserName As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''HL_tasknum control.
+    '''TxtReponseTask control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents HL_tasknum As Global.System.Web.UI.WebControls.HyperLink
+    Protected WithEvents TxtReponseTask As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''DDL_TaskId control.
+    '''ChartResponsePie control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents DDL_TaskId As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents ChartResponsePie As Global.System.Web.UI.DataVisualization.Charting.Chart
 
     '''<summary>
-    '''SqlDataSourceTask control.
+    '''ChartResponseBar control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents SqlDataSourceTask As Global.System.Web.UI.WebControls.SqlDataSource
-
-    '''<summary>
-    '''TB_description control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents TB_description As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''DDL_state control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents DDL_state As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''TB_comment control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents TB_comment As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''Btn_Update control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Btn_Update As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
-    '''SqlDataSourceMyTask control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents SqlDataSourceMyTask As Global.System.Web.UI.WebControls.SqlDataSource
-
-    '''<summary>
-    '''GridViewMyTask control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents GridViewMyTask As Global.System.Web.UI.WebControls.GridView
+    Protected WithEvents ChartResponseBar As Global.System.Web.UI.DataVisualization.Charting.Chart
 End Class

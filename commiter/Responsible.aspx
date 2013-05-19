@@ -9,10 +9,11 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <asp:LinkButton ID="LB_Report" runat="server">Report</asp:LinkButton>
-        <asp:LinkButton ID="LB_Commit" runat="server">Commit</asp:LinkButton>
+        <asp:LinkButton ID="LB_Report" runat="server">MyReport</asp:LinkButton>
+        <asp:LinkButton ID="LB_Commit" runat="server">MyCommit</asp:LinkButton>
         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+        &nbsp; &nbsp; &nbsp; &nbsp;<asp:LinkButton ID="LB_All" runat="server">AllTasks</asp:LinkButton>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
         <asp:LinkButton ID="LB_Logout" runat="server">Logout</asp:LinkButton><br />
         <br />
         Responsible :
@@ -39,7 +40,7 @@
         </asp:DropDownList><br />
         Comment:<br />
         <asp:TextBox ID="TB_comment" runat="server" Height="83px" TextMode="MultiLine" Width="576px"></asp:TextBox><br />
-        <asp:Button ID="Btn_Update" runat="server" Text="Update" Width="120px" />
+        <asp:Button ID="Btn_Update" runat="server" Text="Update" Width="120px" Height="31px" />
         <asp:SqlDataSource ID="SqlDataSourceMyTask" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
             SelectCommand="SELECT id, type, description, status, due_date, commiter, create_date, comment FROM Task WHERE (responsible = @responsible)">
             <SelectParameters>

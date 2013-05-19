@@ -23,7 +23,6 @@
                 </asp:ChartArea>
             </ChartAreas>
         </asp:Chart>
-        <br />
         <asp:Chart ID="ChartType" runat="server">
             <Series>
                 <asp:Series ChartArea="ChartArea1" ChartType="StackedColumn" Name="Series1">

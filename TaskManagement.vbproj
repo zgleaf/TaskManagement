@@ -81,6 +81,7 @@
     <Content Include="index.htm" />
     <Content Include="login.aspx" />
     <Content Include="admin\usermanage.aspx" />
+    <Content Include="responsible\Report.aspx" />
     <Content Include="Web.config" />
     <Content Include="responsible\Responsible.aspx" />
   </ItemGroup>
@@ -134,6 +135,13 @@
     <Compile Include="login.aspx.designer.vb">
       <DependentUpon>login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="responsible\Report.aspx.designer.vb">
+      <DependentUpon>Report.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="responsible\Report.aspx.vb">
+      <DependentUpon>Report.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="utility\MyDB.vb" />
     <Compile Include="utility\MyLog.vb" />
     <Compile Include="utility\MyMessage.vb" />
@@ -166,6 +174,7 @@
       <DependentUpon>Responsible.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="utility\MyReport.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
