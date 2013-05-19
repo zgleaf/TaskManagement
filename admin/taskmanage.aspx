@@ -10,20 +10,21 @@
     <form id="form1" runat="server">
     <div>
         <asp:SqlDataSource ID="TaskMgr" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
-            SelectCommand="SELECT * FROM [Task]" DeleteCommand="DELETE FROM Task WHERE (id = @id)" UpdateCommand="UPDATE Task SET commiter = @commiter, type = @type, state = @state, create_date = @create_date, due_date = @due_date, worker = @worker, work_state = @work_state, update_date = @update_date, description = @description WHERE (id = @id)">
+            SelectCommand="SELECT * FROM [Task]" DeleteCommand="DELETE FROM Task WHERE (id = @id)" UpdateCommand="UPDATE Task SET description = @description, commiter = @commiter, type = @type, status = @status, create_date = @create_date, due_date = @due_date, responsible = @responsible, department = @department, update_date = @update_date, comment = @comment WHERE (id = @id)">
             <DeleteParameters>
                 <asp:Parameter Name="id" />
             </DeleteParameters>
             <UpdateParameters>
+                <asp:Parameter Name="description" />
                 <asp:Parameter Name="commiter" />
                 <asp:Parameter Name="type" />
-                <asp:Parameter Name="state" />
+                <asp:Parameter Name="status" />
                 <asp:Parameter Name="create_date" />
                 <asp:Parameter Name="due_date" />
-                <asp:Parameter Name="worker" />
-                <asp:Parameter Name="work_state" />
+                <asp:Parameter Name="responsible" />
+                <asp:Parameter Name="department" />
                 <asp:Parameter Name="update_date" />
-                <asp:Parameter Name="description" />
+                <asp:Parameter Name="comment" />
                 <asp:Parameter Name="id" />
             </UpdateParameters>
         </asp:SqlDataSource>

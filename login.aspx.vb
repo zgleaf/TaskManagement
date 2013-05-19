@@ -7,6 +7,20 @@ Partial Public Class _Default
 
     Protected Sub BtnLogin_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnLogin.Click
 
+        Dim ConnectString As String = System.Web.Configuration.WebConfigurationManager.ConnectionStrings("ConnectionString").ConnectionString
+
+        Me.TxtLog.Text = ConnectString
+
+        Try
+            Dim connect As SqlClient.SqlConnection
+            connect = New SqlClient.SqlConnection(ConnectString)
+            connect.Open()
+
+        Catch ex As Exception
+            Me.TxtLog.Text += ex.ToString()
+            Return
+        End Try
+
         Dim name = Me.TbName.Text()
         Dim pwd = Me.TbPassword.Text
 
