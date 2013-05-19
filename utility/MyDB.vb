@@ -1,6 +1,7 @@
 Public Class MyDB
 
-    Public Shared ConnectString As String = My.Resources.MyConnectString.ToString()
+    Public Shared ConnectString As String = System.Web.Configuration.WebConfigurationManager.ConnectionStrings("ConnectionString").ConnectionString
+
     Private connect As SqlClient.SqlConnection
 
     Private m_name As String = ""

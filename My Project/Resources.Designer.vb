@@ -59,14 +59,5 @@ Namespace My.Resources
                 resourceCulture = value
             End Set
         End Property
-        
-        '''<summary>
-        '''  Looks up a localized string similar to Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\TaskManagement.mdf;Integrated Security=True;User Instance=True.
-        '''</summary>
-        Friend ReadOnly Property MyConnectString() As String
-            Get
-                Return ResourceManager.GetString("MyConnectString", resourceCulture)
-            End Get
-        End Property
     End Module
 End Namespace

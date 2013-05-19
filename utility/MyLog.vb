@@ -1,5 +1,6 @@
 Public Class MyLog
 
+    Public Shared ConnectString As String = System.Web.Configuration.WebConfigurationManager.ConnectionStrings("ConnectionString").ConnectionString
     Private Shared user_name As String = "logger"
 
     Public Shared Function log(ByRef info As String)
@@ -29,7 +30,7 @@ Public Class MyLog
 
     Public Shared Function writedb(ByRef insert As String, ByRef info As String)
 
-        Dim connect As New SqlClient.SqlConnection(My.Resources.MyConnectString.ToString())
+        Dim connect As New SqlClient.SqlConnection(ConnectString)
         connect.Open()
 
         Dim cmd As New SqlClient.SqlCommand(insert, connect)
