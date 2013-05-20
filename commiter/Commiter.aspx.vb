@@ -2,6 +2,9 @@ Public Partial Class Commiter
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+
+        If Page.IsPostBack Then Return
+
         Dim name = Request.QueryString("name")
         Me.TxtUserName.Text = name
 
@@ -10,17 +13,15 @@ Public Partial Class Commiter
         Dim mytaskinfo = db.getTaskInfo(name, "commiter")
         Me.HL_tasknum.Text = mytaskinfo
 
-        If Not Page.IsPostBack Then
-            Me.TB_duedate.Text = Now.ToShortDateString()
-            Dim hour = Now.Hour
-            If hour < 8 Then
-                hour = 8
-            End If
-            If hour > 18 Then
-                hour = 18
-            End If
-            Me.DDL_duehour.SelectedValue = hour
+        Me.TB_duedate.Text = Now.ToShortDateString()
+        Dim hour = Now.Hour
+        If hour < 8 Then
+            hour = 8
         End If
+        If hour > 18 Then
+            hour = 18
+        End If
+        Me.DDL_duehour.SelectedValue = hour
 
     End Sub
 

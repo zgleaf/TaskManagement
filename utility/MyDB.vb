@@ -90,6 +90,29 @@ Public Class MyDB
 
     End Function
 
+    Public Sub getResponsible(ByRef names As List(Of String))
+
+        Dim myselect = "SELECT name FROM [User] WHERE permission='2' AND invalid != 1;"
+
+        Try
+            If Not connect.State = ConnectionState.Open Then
+                Return
+            End If
+
+            Dim cmd As New SqlClient.SqlCommand(myselect, connect)
+            Dim usr As SqlClient.SqlDataReader = cmd.ExecuteReader()
+            While usr.Read
+                names.Add(usr.GetString(0))
+            End While
+            usr.Close()
+
+        Catch ex As Exception
+            MyLog.err(ex.ToString)
+
+        End Try
+
+    End Sub
+
     Public Function login(ByVal name As String, ByVal pwd As String) As Boolean
 
         Dim myselect = "SELECT * FROM [User] WHERE name='" + name + "' AND pwd='" + pwd + "' AND invalid != 1;"

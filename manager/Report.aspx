@@ -12,6 +12,11 @@
 <body>
     <form id="form1" runat="server">
     <div>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<asp:LinkButton ID="Back" runat="server">Back</asp:LinkButton>
+        &nbsp;
+        <br />
         Task: &nbsp;<asp:Label ID="TxtTaskInfo" runat="server" Text="no task"></asp:Label><br />
         <asp:Chart ID="ChartPie" runat="server">
             <Series>
@@ -23,7 +28,33 @@
                 </asp:ChartArea>
             </ChartAreas>
         </asp:Chart>
-        <asp:Chart ID="ChartType" runat="server">
+        <asp:Chart ID="ChartBar" runat="server">
+            <Series>
+                <asp:Series ChartArea="ChartArea1" ChartType="StackedColumn" Name="Series1">
+                </asp:Series>
+            </Series>
+            <ChartAreas>
+                <asp:ChartArea Name="ChartArea1">
+                </asp:ChartArea>
+            </ChartAreas>
+        </asp:Chart>
+        <br />
+        Responsible:
+        <asp:DropDownList ID="DDL_Member" runat="server" Width="116px" AutoPostBack="True">
+            <asp:ListItem Selected="True">NONE</asp:ListItem>
+        </asp:DropDownList><br />
+        <asp:Label ID="TxtTaskInfoMember" runat="server"></asp:Label><br />
+        <asp:Chart ID="ChartPieMember" runat="server">
+            <Series>
+                <asp:Series ChartArea="ChartArea1" ChartType="Pie" Name="Series1">
+                </asp:Series>
+            </Series>
+            <ChartAreas>
+                <asp:ChartArea Name="ChartArea1">
+                </asp:ChartArea>
+            </ChartAreas>
+        </asp:Chart>
+        <asp:Chart ID="ChartBarMember" runat="server">
             <Series>
                 <asp:Series ChartArea="ChartArea1" ChartType="StackedColumn" Name="Series1">
                 </asp:Series>

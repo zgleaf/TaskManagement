@@ -3,9 +3,10 @@ Partial Public Class taskmanager
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
-        If Not Page.IsPostBack Then
-            UpdateTaskMgr()
-        End If
+        'If Page.IsPostBack Then Return
+
+        UpdateTaskMgr()
+
     End Sub
 
     Protected Sub TaskMgr_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TaskMgr.Load
@@ -37,5 +38,8 @@ Partial Public Class taskmanager
         End If
         myselect += ";"
         Me.TaskMgr.SelectCommand = myselect
+        Me.TaskMgr.Select(DataSourceSelectArguments.Empty)
+        Me.TaskMgr.DataBind()
+        Me.TaskView.DataBind()
     End Sub
 End Class

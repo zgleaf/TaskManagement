@@ -31,6 +31,15 @@ Partial Public Class Report
     Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
 
     '''<summary>
+    '''Back control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Back As Global.System.Web.UI.WebControls.LinkButton
+
+    '''<summary>
     '''TxtTaskInfo control.
     '''</summary>
     '''<remarks>
@@ -49,11 +58,47 @@ Partial Public Class Report
     Protected WithEvents ChartPie As Global.System.Web.UI.DataVisualization.Charting.Chart
 
     '''<summary>
-    '''ChartType control.
+    '''ChartBar control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ChartType As Global.System.Web.UI.DataVisualization.Charting.Chart
+    Protected WithEvents ChartBar As Global.System.Web.UI.DataVisualization.Charting.Chart
+
+    '''<summary>
+    '''DDL_Member control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents DDL_Member As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''TxtTaskInfoMember control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents TxtTaskInfoMember As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''ChartPieMember control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ChartPieMember As Global.System.Web.UI.DataVisualization.Charting.Chart
+
+    '''<summary>
+    '''ChartBarMember control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ChartBarMember As Global.System.Web.UI.DataVisualization.Charting.Chart
 End Class

@@ -77,6 +77,7 @@
     <Content Include="commiter\Commiter.aspx" />
     <Content Include="commiter\Report.aspx" />
     <Content Include="commiter\Responsible.aspx" />
+    <Content Include="manager\DetailReport.aspx" />
     <Content Include="manager\Report.aspx" />
     <Content Include="index.htm" />
     <Content Include="login.aspx" />
@@ -120,6 +121,13 @@
     <Compile Include="commiter\responsible.aspx.vb">
       <DependentUpon>Responsible.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="manager\DetailReport.aspx.designer.vb">
+      <DependentUpon>DetailReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="manager\DetailReport.aspx.vb">
+      <SubType>ASPXCodebehind</SubType>
+      <DependentUpon>DetailReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="manager\Report.aspx.designer.vb">
       <DependentUpon>Report.aspx</DependentUpon>

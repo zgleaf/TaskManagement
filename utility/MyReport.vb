@@ -41,6 +41,18 @@ Public Class MyReport
 
     End Function
 
+    Public Function GetPieStatus(ByVal val As Integer) As String
+        If val = 0 Then
+            Return New String("finished")
+        ElseIf val = 1 Then
+            Return New String("delay")
+        ElseIf val = 2 Then
+            Return New String("on-going")
+        Else
+            Return New String("closed")
+        End If
+    End Function
+
     Public Sub fillBar(ByRef bar As Chart, ByVal name As String, ByVal perm As String)
 
         Dim db As MyDB = New MyDB(name, perm)
@@ -68,7 +80,7 @@ Public Class MyReport
                     series.Points.AddXY(tasktype(i), tasknum(i, st))
                 Next
                 series.ToolTip = "#SERIESNAME: #VALY"
-                series.PostBackValue = "#INDEX"
+                series.PostBackValue = "#SERIESNAME:#INDEX"
                 series.LegendPostBackValue = "#INDEX"
                 bar.Series.Add(series)
             Next
@@ -91,4 +103,22 @@ Public Class MyReport
 
     End Sub
 
+    Public Function GetBarStatus(ByVal val As String, ByRef type As String) As String
+        Dim tasktype As String() = {"Kaizen", "5s", "EHS", "QC", "DAM"}
+        Dim taskstatus As String() = {"已完成", "已延迟", "进行中"}
+        Dim status As String() = {"finished", "delay", "on-going"}
+        Dim i As Integer = 0
+        For Each st As String In taskstatus
+            Dim j As Integer = 0
+            For Each tp As String In tasktype
+                If val = st + ":" + j.ToString() Then
+                    type = tp
+                    Return status(i)
+                End If
+                j += 1
+            Next
+            i += 1
+        Next
+        Return "Closed"
+    End Function
 End Class

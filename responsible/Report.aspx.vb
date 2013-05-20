@@ -12,6 +12,8 @@ Partial Public Class Report2
         Dim report As New MyReport
         Dim info_reponse As String = report.fillPie(ChartResponsePie, name, "responsible")
         report.fillBar(ChartResponseBar, name, "responsible")
+
+        If Page.IsPostBack Then Return
         Me.TxtReponseTask.Text = info_reponse
 
     End Sub

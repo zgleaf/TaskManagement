@@ -14,7 +14,6 @@ Partial Public Class Report1
         report.fillBar(ChartCommitBar, name, "commiter")
         Me.TxtCommitTask.Text = info_commit
 
-
         Dim info_reponse As String = report.fillPie(ChartResponsePie, name, "responsible")
         report.fillBar(ChartResponseBar, name, "responsible")
         Me.TxtReponseTask.Text = info_reponse
