@@ -317,9 +317,9 @@ Public Class MyDB
                 ElseIf status.ToLower() = "finished" Then
                     task_finished += 1
                 ElseIf status.ToLower() = "on-going" Or status.ToLower() = "new" Then
-                    Dim plan_date As DateTime = task.GetDateTime(2)
+                    Dim due_date As DateTime = task.GetDateTime(2)
 
-                    If plan_date >= Now Then
+                    If due_date >= Now Then
                         task_normal += 1
                     Else
                         task_delay += 1
@@ -483,9 +483,9 @@ Public Class MyDB
                 ElseIf status.ToLower() = "finished" Then
                     task_finished += 1
                 ElseIf status.ToLower() = "on-going" Or status.ToLower() = "new" Then
-                    Dim plan_date As DateTime = task.GetDateTime(2)
+                    Dim due_date As DateTime = task.GetDateTime(2)
 
-                    If plan_date >= Now Then
+                    If due_date >= Now Then
                         task_ongo += 1
                     Else
                         task_delay += 1
@@ -497,16 +497,18 @@ Public Class MyDB
 
             task.Close()
 
-            info = "All " + task_num.ToString() + ", "
-            info += "nogoing " + task_ongo.ToString() + ","
-            info += "delay " + task_delay.ToString() + ","
-            info += "finished " + task_finished.ToString() + ","
-            info += "closed " + task_close.ToString() + ",  "
-            info += "Kaison " + task_kaison.ToString() + ","
-            info += "5s " + task_5s.ToString() + ","
-            info += "EHS " + task_ehs.ToString() + ","
-            info += "QC " + task_qc.ToString() + ","
-            info += "DAM " + task_dam.ToString()
+            info = "All " + task_num.ToString() + " "
+            info += "<br/>"
+            info += " On-Going " + task_ongo.ToString() + ","
+            info += " Delay " + task_delay.ToString() + ","
+            info += " Finished " + task_finished.ToString() + ","
+            info += " Closed " + task_close.ToString() + "  "
+            info += "<br/>"
+            info += " Kaison " + task_kaison.ToString() + ","
+            info += " 5s " + task_5s.ToString() + ","
+            info += " EHS " + task_ehs.ToString() + ","
+            info += " QC " + task_qc.ToString() + ","
+            info += " DAM " + task_dam.ToString()
 
             Return True
         Catch ex As Exception
@@ -518,7 +520,7 @@ Public Class MyDB
 
     End Function
 
-    Public Function getAllTaskInfo(ByVal tasktype As String(), ByVal tasknum As Integer(,)) As Boolean
+    Public Function getAllTaskInfo(ByVal tasktype As String(), ByRef tasknum As Integer(,)) As Boolean
 
         Dim myselect = "SELECT type,status,due_date FROM [Task];"
         If (m_name <> "" And m_perm <> "") Then
@@ -553,9 +555,9 @@ Public Class MyDB
                         ElseIf status.ToLower() = "finished" Then
                             tasknum(i, 0) += 1
                         ElseIf status.ToLower() = "on-going" Or status.ToLower() = "new" Then
-                            Dim plan_date As DateTime = task.GetDateTime(2)
+                            Dim due_date As DateTime = task.GetDateTime(2)
 
-                            If plan_date >= Now Then
+                            If due_date >= Now Then
                                 tasknum(i, 2) += 1
                             Else
                                 tasknum(i, 1) += 1
@@ -566,6 +568,68 @@ Public Class MyDB
                     End If
                 Next
                 task_num += 1
+            End While
+
+            task.Close()
+
+            Return True
+        Catch ex As Exception
+            MyLog.err(ex.ToString)
+
+        End Try
+
+        Return False
+
+    End Function
+
+    Public Function getTaskByPerson(ByRef taskreponse As List(Of String), ByRef finish_num As List(Of Integer), ByRef delay_num As List(Of Integer), ByRef ongo_num As List(Of Integer)) As Boolean
+
+        Dim myselect = "SELECT responsible,status,due_date FROM [Task];"
+
+        Try
+            If Not connect.State = ConnectionState.Open Then
+                Return False
+            End If
+
+            Dim cmd As New SqlClient.SqlCommand(myselect, connect)
+            Dim task As SqlClient.SqlDataReader = cmd.ExecuteReader()
+            Dim task_count = task.HasRows()
+
+            If Not task_count Then
+                Return False
+            End If
+
+            While task.Read
+                Dim responsible = task.GetString(0)
+                Dim rep_id = -1
+                For i As Integer = 0 To taskreponse.Count - 1
+                    If (responsible = taskreponse.Item(i)) Then
+                        rep_id = i
+                    End If
+                Next
+                If rep_id = -1 Then
+                    taskreponse.Add(responsible)
+                    finish_num.Add(0)
+                    delay_num.Add(0)
+                    ongo_num.Add(0)
+                    rep_id = taskreponse.Count - 1
+                End If
+
+                Dim status As String = task.GetString(1)
+                If status.ToLower() = "closed" Then
+                    'close task
+                ElseIf status.ToLower() = "finished" Then
+                    finish_num.Item(rep_id) += 1
+                ElseIf status.ToLower() = "on-going" Or status.ToLower() = "new" Then
+                    Dim due_date As DateTime = task.GetDateTime(2)
+
+                    If due_date >= Now Then
+                        ongo_num.Item(rep_id) += 1
+                    Else
+                        delay_num.Item(rep_id) += 1
+                    End If
+                End If
+
             End While
 
             task.Close()

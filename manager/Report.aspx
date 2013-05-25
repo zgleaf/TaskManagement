@@ -42,9 +42,19 @@
         <br />
         Responsible:
         <asp:DropDownList ID="DDL_Member" runat="server" Width="116px" AutoPostBack="True">
-            <asp:ListItem Selected="True">NONE</asp:ListItem>
+            <asp:ListItem Selected="True">All</asp:ListItem>
         </asp:DropDownList><br />
         <asp:Label ID="TxtTaskInfoMember" runat="server"></asp:Label><br />
+        <asp:Chart ID="ChartTaskByPerson" runat="server" Visible="False">
+            <Series>
+                <asp:Series ChartArea="ChartArea1" Name="Series1">
+                </asp:Series>
+            </Series>
+            <ChartAreas>
+                <asp:ChartArea Name="ChartArea1">
+                </asp:ChartArea>
+            </ChartAreas>
+        </asp:Chart>
         <asp:Chart ID="ChartPieMember" runat="server">
             <Series>
                 <asp:Series ChartArea="ChartArea1" ChartType="Pie" Name="Series1">

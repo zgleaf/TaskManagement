@@ -121,4 +121,82 @@ Public Class MyReport
         Next
         Return "Closed"
     End Function
+
+    Public Function fillBarByPerson(ByRef bar As Chart) As String
+
+        Dim db As MyDB = New MyDB()
+
+        bar.Series.Clear()
+
+        Dim taskreponse As New List(Of String)
+        Dim taskstatus As String() = {"已完成", "已延迟", "进行中"}
+        Dim taskcolor As Color() = {Color.Blue, Color.Green, Color.LightGreen}
+        Dim finish_num As New List(Of Integer)
+        Dim delay_num As New List(Of Integer)
+        Dim ongo_num As New List(Of Integer)
+
+        Dim info As String = "负责人(" + taskstatus(0) + ", " + taskstatus(1) + ", " + taskstatus(2) + ") "
+        info += "<br/>"
+
+        If db.getTaskByPerson(taskreponse, finish_num, delay_num, ongo_num) Then
+
+            For st As Integer = 0 To 2
+                Dim series As Series = New Series(taskstatus(st))
+                series.ChartType = SeriesChartType.Column
+                series.Color = taskcolor(st)
+                series.BorderWidth = 2
+                series.ShadowOffset = 1
+                series.IsVisibleInLegend = True
+                series.IsValueShownAsLabel = True
+                series.MarkerStyle = MarkerStyle.Diamond
+                series.MarkerSize = 8
+                For i As Integer = 0 To taskreponse.Count - 1
+                    Dim task_num As Integer() = {finish_num(i), delay_num(i), ongo_num(i)}
+                    series.Points.AddXY(taskreponse.Item(i), task_num(st))
+
+                    If (st = 0) Then
+                        info += " " + taskreponse.Item(i) + "(" + finish_num(i).ToString() + ", " + delay_num(i).ToString() + ", " + ongo_num(i).ToString() + ")"
+                        info += "<br/>"
+                    End If
+                Next
+                series.ToolTip = "#SERIESNAME: #VALY"
+                series.PostBackValue = "#SERIESNAME:#VALX"
+                series.LegendPostBackValue = "#INDEX"
+                bar.Series.Add(series)
+            Next
+        End If
+
+        '设置坐标轴
+        bar.ChartAreas(0).AxisX.LineColor = Color.Black
+        bar.ChartAreas(0).AxisY.LineColor = Color.Black
+        bar.ChartAreas(0).AxisX.LineWidth = 1.5
+        bar.ChartAreas(0).AxisY.LineWidth = 1.5
+        bar.ChartAreas(0).AxisY.Title = "Task"
+        '设置网格线
+        'bar.ChartAreas(0).AxisX.MajorGrid.LineColor = Color.Blue
+        'bar.ChartAreas(0).AxisY.MajorGrid.LineColor = Color.Blue
+
+        bar.Width = 1000
+        bar.Height = 400
+
+        bar.DataBind()
+
+        Return info
+
+    End Function
+
+    Public Function GetBarStatusByPerson(ByVal val As String, ByRef reponse As String) As String
+        Dim taskstatus As String() = {"已完成", "已延迟", "进行中"}
+        Dim status As String() = {"finished", "delay", "on-going"}
+        Dim valstatus As String = val.Substring(0, 3)
+        Dim i As Integer = 0
+        For Each st As String In taskstatus
+            If valstatus = st Then
+                reponse = val.Substring(4, val.Length - 4)
+                Return status(i)
+            End If
+            i += 1
+        Next
+        Return "Closed"
+    End Function
 End Class

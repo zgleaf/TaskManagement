@@ -26,7 +26,7 @@ Partial Public Class Report
             End If
 
             Me.DDL_Member.Items.Clear()
-            Me.DDL_Member.Items.Add("NONE")
+            Me.DDL_Member.Items.Add("All")
 
             Dim members As New List(Of String)
             Dim db As New MyDB
@@ -35,8 +35,6 @@ Partial Public Class Report
             For Each mem As String In members
                 Me.DDL_Member.Items.Add(mem)
             Next
-
-            Me.DDL_Member.Items.Add("All")
 
         End If
 
@@ -67,7 +65,7 @@ Partial Public Class Report
     End Sub
 
     Protected Sub DDL_Member_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DDL_Member.SelectedIndexChanged
-        updateMembers()
+        'updateMembers()
 
     End Sub
 
@@ -75,18 +73,22 @@ Partial Public Class Report
         If (Me.DDL_Member.Text = "NONE") Then
             Me.ChartPieMember.Visible = False
             Me.ChartBarMember.Visible = False
+            Me.ChartTaskByPerson.Visible = False
             Me.TxtTaskInfoMember.Text = ""
             Return
         End If
-        Me.ChartPieMember.Visible = True
-        Me.ChartBarMember.Visible = True
         Dim name = Me.DDL_Member.Text
         Dim report As New MyReport
         If (Me.DDL_Member.Text = "All") Then
-            Dim info_reponse As String = report.fillPie(ChartPieMember, name, "responsible")
-            report.fillBar(ChartBarMember, name, "responsible")
-            Me.TxtTaskInfoMember.Text = info_reponse
+            Me.ChartBarMember.Visible = False
+            Me.ChartBarMember.Visible = False
+            Me.ChartTaskByPerson.Visible = True
+            Dim info_response As String = report.fillBarByPerson(ChartTaskByPerson)
+            Me.TxtTaskInfoMember.Text = info_response
         Else
+            Me.ChartPieMember.Visible = True
+            Me.ChartBarMember.Visible = True
+            Me.ChartTaskByPerson.Visible = False
             Dim info_reponse As String = report.fillPie(ChartPieMember, name, "responsible")
             report.fillBar(ChartBarMember, name, "responsible")
             Me.TxtTaskInfoMember.Text = info_reponse
@@ -107,6 +109,16 @@ Partial Public Class Report
         Dim type As New String("")
         Dim status As String = report.GetBarStatus(val, type)
         Response.Redirect("DetailReport.aspx?status=" + status + "&type=" + type + "&rpname=" + Me.DDL_Member.Text + m_nameReq)
+
+    End Sub
+
+    Protected Sub ChartTaskByPerson_Point(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.ImageMapEventArgs) Handles ChartTaskByPerson.Click
+        Dim val = e.PostBackValue
+        Dim report As New MyReport
+        Dim reponse As New String("")
+        Dim status As String = report.GetBarStatusByPerson(val, reponse)
+
+        Response.Redirect("DetailReport.aspx?status=" + status + "&rpname=" + reponse + m_nameReq)
 
     End Sub
 
