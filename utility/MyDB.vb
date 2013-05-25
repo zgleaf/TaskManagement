@@ -92,7 +92,7 @@ Public Class MyDB
 
     Public Sub getResponsible(ByRef names As List(Of String))
 
-        Dim myselect = "SELECT name FROM [User] WHERE permission='2' AND invalid != 1;"
+        Dim myselect = "SELECT name FROM [User] WHERE (permission='2' OR permission='1') AND invalid != 1;"
 
         Try
             If Not connect.State = ConnectionState.Open Then

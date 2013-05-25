@@ -175,6 +175,42 @@ Partial Public Class Commiter
     Protected WithEvents Btn_Commit As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
+    '''CK_Closed control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CK_Closed As Global.System.Web.UI.WebControls.CheckBox
+
+    '''<summary>
+    '''CK_Finished control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CK_Finished As Global.System.Web.UI.WebControls.CheckBox
+
+    '''<summary>
+    '''CK_Delay control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CK_Delay As Global.System.Web.UI.WebControls.CheckBox
+
+    '''<summary>
+    '''CK_On_Going control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CK_On_Going As Global.System.Web.UI.WebControls.CheckBox
+
+    '''<summary>
     '''GridViewMyTask control.
     '''</summary>
     '''<remarks>

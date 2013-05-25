@@ -22,8 +22,8 @@ Public Class MyReport
             series.Label = "#VALX: #VALY \n #PERCENT{P1}"
 
             ' Populate series data
-            Dim yValues As Integer() = New Integer() {finished_num, delay_num, ongo_num}
-            Dim xValues As String() = New String() {"已完成", "已延迟", "进行中"}
+            Dim yValues As Integer() = New Integer() {finished_num, ongo_num, delay_num}
+            Dim xValues As String() = New String() {"已完成", "进行中", "已延迟"}
             series.Points.DataBindXY(xValues, yValues)
             ' Set series visual attributes
             series.ChartType = SeriesChartType.Pie
@@ -45,9 +45,9 @@ Public Class MyReport
         If val = 0 Then
             Return New String("finished")
         ElseIf val = 1 Then
-            Return New String("delay")
-        ElseIf val = 2 Then
             Return New String("on-going")
+        ElseIf val = 2 Then
+            Return New String("delay")
         Else
             Return New String("closed")
         End If

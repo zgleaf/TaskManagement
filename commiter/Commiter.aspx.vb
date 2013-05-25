@@ -1,36 +1,43 @@
 Public Partial Class Commiter
     Inherits System.Web.UI.Page
 
+    Protected Shared m_name As New String("")
+    Protected Shared m_selTasks As New String("Select * from Task")
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
-        If Page.IsPostBack Then Return
+        If Not Page.IsPostBack Then
 
-        Dim name = Request.QueryString("name")
-        Me.TxtUserName.Text = name
+            m_name = Request.QueryString("name")
+            Me.TxtUserName.Text = m_name
 
-        Dim db As New MyDB
+            Dim db As New MyDB
 
-        Dim mytaskinfo = db.getTaskInfo(name, "commiter")
-        Me.HL_tasknum.Text = mytaskinfo
+            Dim mytaskinfo = db.getTaskInfo(m_name, "commiter")
+            Me.HL_tasknum.Text = mytaskinfo
 
-        Me.TB_duedate.Text = Now.ToShortDateString()
-        Dim hour = Now.Hour
-        If hour < 8 Then
-            hour = 8
+            Me.TB_duedate.Text = Now.ToShortDateString()
+            Dim hour = Now.Hour
+            If hour < 8 Then
+                hour = 8
+            End If
+            If hour > 18 Then
+                hour = 18
+            End If
+            Me.DDL_duehour.SelectedValue = hour
+
         End If
-        If hour > 18 Then
-            hour = 18
-        End If
-        Me.DDL_duehour.SelectedValue = hour
+
+        UpdateTaskView()
 
     End Sub
 
     Protected Sub Btn_Commit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Btn_Commit.Click
-        If Me.TxtUserName.Text = "" Then
+        If m_name = "" Then
             Return
         End If
 
-        Dim commiter = Me.TxtUserName.Text
+        Dim commiter = m_name
         Dim type = Me.DDL_Type.SelectedValue
         Dim status = "on-going"
         Dim create_date = Now.ToString("yyyy-MM-dd HH:mm:ss")
@@ -51,15 +58,60 @@ Public Partial Class Commiter
         Response.Redirect(Request.RawUrl.ToString)
     End Sub
 
+    Protected Sub UpdateTaskView()
+        If m_name = "" Then
+            Return
+        End If
+
+        Dim myselect = "SELECT * FROM Task WHERE commiter='" + m_name + "'"
+
+        Dim closed As Boolean = Me.CK_Closed.Checked
+        Dim finshed As Boolean = Me.CK_Finished.Checked
+        Dim delay As Boolean = Me.CK_Delay.Checked
+        Dim normal As Boolean = Me.CK_On_Going.Checked
+        Dim none As Boolean = Not (closed Or finshed Or delay Or normal)
+
+        If (Not none) Then
+            If delay And normal Then
+                myselect += " AND ((status='on-going')"
+            ElseIf delay Then
+                myselect += " AND (((status='on-going') AND (due_date <= GETDATE()))"
+            ElseIf normal Then
+                myselect += " AND (((status='on-going') AND (due_date > GETDATE()))"
+            Else
+                myselect += " AND ("
+            End If
+            If closed Then
+                If delay Or normal Then myselect += " OR "
+                myselect += "(status='closed')"
+            End If
+            If finshed Then
+                If delay Or normal Or closed Then myselect += " OR "
+                myselect += "(status='finished')"
+            End If
+            myselect += ")"
+
+        Else
+            myselect += " AND (status!='on-going') AND (status!='closed') AND (status!='finished')"
+
+        End If
+
+        myselect += ";"
+        If Not m_selTasks.Equals(myselect) Then
+            m_selTasks = myselect
+            Me.SqlDataSourceMyTask.SelectCommand = m_selTasks
+            Me.SqlDataSourceMyTask.Select(DataSourceSelectArguments.Empty)
+            Me.SqlDataSourceMyTask.DataBind()
+            Me.GridViewMyTask.DataBind()
+        End If
+    End Sub
+
     Protected Sub LB_Report_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LB_Report.Click
-        Dim name = Me.TxtUserName.Text
-        Response.Redirect("Report.aspx?name=" + name)
+        Response.Redirect("Report.aspx?name=" + m_name)
     End Sub
 
     Protected Sub LB_Reponse_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LB_Reponse.Click
-        Dim name = Me.TxtUserName.Text
-        Response.Redirect("Responsible.aspx?name=" + name)
-
+        Response.Redirect("Responsible.aspx?name=" + m_name)
     End Sub
 
     Protected Sub LB_Logout_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LB_Logout.Click
@@ -67,6 +119,6 @@ Public Partial Class Commiter
     End Sub
 
     Protected Sub LB_All_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LB_All.Click
-        Response.Redirect("..\manager\Report.aspx")
+        Response.Redirect("..\manager\Report.aspx?name=" + m_name)
     End Sub
 End Class

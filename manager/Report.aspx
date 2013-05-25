@@ -14,9 +14,10 @@
     <div>
         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<asp:LinkButton ID="Back" runat="server">Back</asp:LinkButton>
-        &nbsp;
-        <br />
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<asp:LinkButton ID="Back" runat="server">Back</asp:LinkButton>
+        &nbsp;&nbsp;&nbsp;
+        <asp:LinkButton ID="Login" runat="server">Login</asp:LinkButton><br />
         Task: &nbsp;<asp:Label ID="TxtTaskInfo" runat="server" Text="no task"></asp:Label><br />
         <asp:Chart ID="ChartPie" runat="server">
             <Series>

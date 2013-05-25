@@ -85,6 +85,42 @@ Partial Public Class Responsible1
     Protected WithEvents HL_tasknum As Global.System.Web.UI.WebControls.HyperLink
 
     '''<summary>
+    '''CK_Closed control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CK_Closed As Global.System.Web.UI.WebControls.CheckBox
+
+    '''<summary>
+    '''CK_Finished control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CK_Finished As Global.System.Web.UI.WebControls.CheckBox
+
+    '''<summary>
+    '''CK_Delay control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CK_Delay As Global.System.Web.UI.WebControls.CheckBox
+
+    '''<summary>
+    '''CK_On_Going control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents CK_On_Going As Global.System.Web.UI.WebControls.CheckBox
+
+    '''<summary>
     '''DDL_TaskId control.
     '''</summary>
     '''<remarks>

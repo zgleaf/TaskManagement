@@ -40,6 +40,15 @@ Partial Public Class Report
     Protected WithEvents Back As Global.System.Web.UI.WebControls.LinkButton
 
     '''<summary>
+    '''Login control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Login As Global.System.Web.UI.WebControls.LinkButton
+
+    '''<summary>
     '''TxtTaskInfo control.
     '''</summary>
     '''<remarks>

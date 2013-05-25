@@ -31,22 +31,40 @@ Partial Public Class DetailReport
     Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
 
     '''<summary>
-    '''Label1 control.
+    '''Back control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Label1 As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents Back As Global.System.Web.UI.WebControls.LinkButton
 
     '''<summary>
-    '''Label2 control.
+    '''Login control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Label2 As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents Login As Global.System.Web.UI.WebControls.LinkButton
+
+    '''<summary>
+    '''TxtFilter control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents TxtFilter As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''TxtFilterContent control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents TxtFilterContent As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''GridViewTask control.
