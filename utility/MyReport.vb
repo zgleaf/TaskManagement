@@ -61,7 +61,7 @@ Public Class MyReport
 
         Dim tasktype As String() = {"Kaizen", "5s", "EHS", "QC", "DAM"}
         Dim taskstatus As String() = {"已完成", "已延迟", "进行中"}
-        Dim taskcolor As Color() = {Color.Blue, Color.Green, Color.LightGreen}
+        Dim taskcolor As Color() = {Color.SteelBlue, Color.Red, Color.Orange}
         Dim tasknum As Integer(,) = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
 
         If db.getAllTaskInfo(tasktype, tasknum) Then
@@ -130,7 +130,7 @@ Public Class MyReport
 
         Dim taskreponse As New List(Of String)
         Dim taskstatus As String() = {"已完成", "已延迟", "进行中"}
-        Dim taskcolor As Color() = {Color.Blue, Color.Green, Color.LightGreen}
+        Dim taskcolor As Color() = {Color.SteelBlue, Color.Red, Color.Orange}
         Dim finish_num As New List(Of Integer)
         Dim delay_num As New List(Of Integer)
         Dim ongo_num As New List(Of Integer)

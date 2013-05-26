@@ -36,10 +36,7 @@
         <asp:SqlDataSource ID="SqlDataSourceTask" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
             SelectCommand="SELECT [type] FROM [TaskType]"></asp:SqlDataSource>
         &nbsp;<asp:SqlDataSource ID="SqlDataSourceWorker" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
-            SelectCommand="SELECT [name] FROM [User] WHERE ([permission] = @permission)">
-            <SelectParameters>
-                <asp:Parameter DefaultValue="2" Name="permission" Type="Int32" />
-            </SelectParameters>
+            SelectCommand="SELECT [name] FROM [User] WHERE (([permission] = 1) OR ([permission] = 2)) AND (invalid = 0)">
         </asp:SqlDataSource>
         <br />
         DueDate&nbsp;
