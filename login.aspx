@@ -14,7 +14,7 @@
         <asp:Label ID="Label2" runat="server" Text="Password"></asp:Label>
         <asp:TextBox ID="TbPassword" runat="server" TextMode="Password" Width="149px"></asp:TextBox><br />
         <asp:Button ID="BtnLogin" runat="server" Text="Login" /><br />
-        <asp:Label ID="TxtLog" runat="server" Width="303px"></asp:Label>
+        <asp:Label ID="TxtLog" runat="server" Width="303px" Visible="False"></asp:Label>
     
     </div>
     </form>

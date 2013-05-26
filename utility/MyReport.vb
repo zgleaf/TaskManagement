@@ -159,7 +159,7 @@ Public Class MyReport
                         info += "<br/>"
                     End If
                 Next
-                series.ToolTip = "#SERIESNAME: #VALY"
+                series.ToolTip = "#VALX #SERIESNAME: #VALY"
                 series.PostBackValue = "#SERIESNAME:#VALX"
                 series.LegendPostBackValue = "#INDEX"
                 bar.Series.Add(series)

@@ -40,6 +40,7 @@
             <asp:ListItem Value="0">未完成</asp:ListItem>
             <asp:ListItem Value="1">完成</asp:ListItem>
         </asp:DropDownList><br />
+        Comment:<br />
         <asp:TextBox ID="TB_comment" runat="server" Height="83px" TextMode="MultiLine" Width="576px"></asp:TextBox><br />
         <asp:Button ID="Btn_Update" runat="server" Text="Update" Width="120px" />
         <asp:SqlDataSource ID="SqlDataSourceMyTask" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
