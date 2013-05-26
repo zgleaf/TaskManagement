@@ -11,7 +11,7 @@
     <div>
         <asp:LinkButton ID="LB_Report" runat="server">MyReport</asp:LinkButton>
         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-        <asp:LinkButton ID="LB_All" runat="server">AllTasks</asp:LinkButton>
+        <asp:LinkButton ID="LB_All" runat="server" Enabled="False" Visible="False">AllTasks</asp:LinkButton>
         &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
         &nbsp; &nbsp;<asp:LinkButton ID="LB_Logout" runat="server">Logout</asp:LinkButton><br />
         <br />

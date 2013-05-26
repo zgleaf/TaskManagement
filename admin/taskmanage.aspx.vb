@@ -1,21 +1,31 @@
 Partial Public Class taskmanager
     Inherits System.Web.UI.Page
 
+    Protected Shared m_name As New String("")
+    Protected Shared m_pwd As New String("")
+    Protected Shared m_seltasks As String = "SELECT * FROM [Task]"
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
-        'If Page.IsPostBack Then Return
+        If Not Page.IsPostBack Then
+            m_name = Request.QueryString("name")
+            m_pwd = Request.QueryString("pwd")
+
+            Dim db As New MyDB
+            If Not db.login(m_name, m_pwd) And Not db.getUserType(m_name) = "admin" Then
+                Me.Btn_Search.Enabled = False
+                Me.Btn_Clear.Enabled = False
+                Response.Redirect("../login.aspx")
+                Return
+            End If
+        End If
 
         UpdateTaskMgr()
-
-    End Sub
-
-    Protected Sub TaskMgr_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TaskMgr.Load
-        Dim myselect = Me.TaskMgr.SelectCommand
 
     End Sub
 
     Protected Sub Btn_Search_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Btn_Search.Click
-        UpdateTaskMgr()
+        'UpdateTaskMgr()
 
     End Sub
 
@@ -37,9 +47,22 @@ Partial Public Class taskmanager
             myselect += " WHERE responsible='" + reponse + "'"
         End If
         myselect += ";"
-        Me.TaskMgr.SelectCommand = myselect
-        Me.TaskMgr.Select(DataSourceSelectArguments.Empty)
-        Me.TaskMgr.DataBind()
+
+        If Not m_seltasks.Equals(myselect) Then
+            m_seltasks = myselect
+            Me.TaskMgr.SelectCommand = myselect
+            Me.TaskMgr.Select(DataSourceSelectArguments.Empty)
+            Me.TaskMgr.DataBind()
+            Me.TaskView.DataBind()
+        End If
+    End Sub
+
+    Protected Sub Btn_Clear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Btn_Clear.Click
+
+        Me.TaskMgr.UpdateCommand = "DELETE FROM [Task];"
+        Me.TaskMgr.Update()
         Me.TaskView.DataBind()
+
+        Response.Redirect(Request.RawUrl.ToString)
     End Sub
 End Class

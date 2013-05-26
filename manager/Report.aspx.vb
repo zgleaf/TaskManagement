@@ -84,7 +84,7 @@ Partial Public Class Report
             Me.ChartBarMember.Visible = False
             Me.ChartTaskByPerson.Visible = True
             Dim info_response As String = report.fillBarByPerson(ChartTaskByPerson)
-            Me.TxtTaskInfoMember.Text = info_response
+            Me.TxtTaskInfoMember.Text = ""
         Else
             Me.ChartPieMember.Visible = True
             Me.ChartBarMember.Visible = True

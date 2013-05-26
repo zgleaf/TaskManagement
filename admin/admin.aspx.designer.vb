@@ -14,12 +14,12 @@ Option Explicit On
 
 
 '''<summary>
-'''logmanager class.
+'''admin class.
 '''</summary>
 '''<remarks>
 '''Auto-generated class.
 '''</remarks>
-Partial Public Class logmanager
+Partial Public Class admin
 
     '''<summary>
     '''form1 control.
@@ -31,29 +31,38 @@ Partial Public Class logmanager
     Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
 
     '''<summary>
-    '''TaskMgr control.
+    '''Logout control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TaskMgr As Global.System.Web.UI.WebControls.SqlDataSource
+    Protected WithEvents Logout As Global.System.Web.UI.WebControls.LinkButton
 
     '''<summary>
-    '''BtnClear control.
+    '''LB_TaskMg control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents BtnClear As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents LB_TaskMg As Global.System.Web.UI.WebControls.LinkButton
 
     '''<summary>
-    '''LogView control.
+    '''LB_LogMg control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents LogView As Global.System.Web.UI.WebControls.GridView
+    Protected WithEvents LB_LogMg As Global.System.Web.UI.WebControls.LinkButton
+
+    '''<summary>
+    '''LB_UserMg control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents LB_UserMg As Global.System.Web.UI.WebControls.LinkButton
 End Class

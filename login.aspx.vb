@@ -51,7 +51,7 @@ Partial Public Class _Default
         ElseIf type = "responsible" Then
             Response.Redirect("responsible/Responsible.aspx?name=" + name)
         ElseIf type = "admin" Then
-
+            Response.Redirect("admin/admin.aspx?name=" + name + "&pwd=" + pwd)
         End If
 
     End Sub

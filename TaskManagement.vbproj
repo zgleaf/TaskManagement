@@ -67,6 +67,7 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="admin\admin.aspx" />
     <Content Include="admin\logmanage.aspx" />
     <Content Include="App_Data\TaskManagement.mdf">
     </Content>
@@ -87,6 +88,13 @@
     <Content Include="responsible\Responsible.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="admin\admin.aspx.designer.vb">
+      <DependentUpon>admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\admin.aspx.vb">
+      <SubType>ASPXCodebehind</SubType>
+      <DependentUpon>admin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\logmanage.aspx.designer.vb">
       <DependentUpon>logmanage.aspx</DependentUpon>
     </Compile>

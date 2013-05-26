@@ -76,6 +76,15 @@ Partial Public Class taskmanager
     Protected WithEvents Btn_Search As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
+    '''Btn_Clear control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Btn_Clear As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
     '''TaskView control.
     '''</summary>
     '''<remarks>
