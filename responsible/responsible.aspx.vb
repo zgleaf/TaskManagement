@@ -146,7 +146,7 @@ Partial Public Class Responsible
     End Sub
 
     Protected Sub LB_Report_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LB_Report.Click
-        Response.Redirect("Responsible.aspx?name=" + m_name)
+        Response.Redirect("Report.aspx?name=" + m_name)
     End Sub
 
     Protected Sub LB_All_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LB_All.Click
