@@ -3,18 +3,23 @@ Imports system.Data.SqlClient
 Partial Public Class DetailReport
     Inherits System.Web.UI.Page
 
-    Protected Shared back_url As New String("")
-
-    Protected Shared m_ciname As New String("")
-    Protected Shared m_rpname As New String("")
-    Protected Shared m_type As New String("")
-    Protected Shared m_status As New String("")
+    Protected m_ciname As New String("")
+    Protected m_rpname As New String("")
+    Protected m_type As New String("")
+    Protected m_status As New String("")
 
     Protected Shared m_selTasks As New String("Select * from Task")
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
+        m_type = Request.QueryString("type")
+        m_status = Request.QueryString("status")
+        m_ciname = Request.QueryString("ciname")
+        m_rpname = Request.QueryString("rpname")
+
         If Not Page.IsPostBack Then
+
+            Me.Back.Attributes.Add("onClick", "javascript:history.back(); return false;")
 
             Dim name = Request.QueryString("name")
             If name <> "" Then
@@ -23,14 +28,6 @@ Partial Public Class DetailReport
                 Me.Login.Visible = True
             End If
 
-            If Request.UrlReferrer <> Nothing Then
-                back_url = Request.UrlReferrer.AbsoluteUri.ToString()
-            End If
-
-            m_type = Request.QueryString("type")
-            m_status = Request.QueryString("status")
-            m_ciname = Request.QueryString("ciname")
-            m_rpname = Request.QueryString("rpname")
 
             Dim filter As New String("")
             If m_type <> "" Then filter += " type(" + m_type + ") "
@@ -89,12 +86,6 @@ Partial Public Class DetailReport
             Me.SqlDataSourceTask.Select(DataSourceSelectArguments.Empty)
             Me.SqlDataSourceTask.DataBind()
             Me.GridViewTask.DataBind()
-        End If
-    End Sub
-
-    Protected Sub Back_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Back.Click
-        If back_url <> "" Then
-            Response.Redirect(back_url)
         End If
     End Sub
 

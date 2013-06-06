@@ -1,14 +1,16 @@
 Public Partial Class Commiter
     Inherits System.Web.UI.Page
 
-    Protected Shared m_name As New String("")
-    Protected Shared m_selTasks As New String("Select * from Task")
+    Protected m_name As New String("")
+    Protected Shared m_selTasks As New String("")
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
-        If Not Page.IsPostBack Then
+        m_name = Request.QueryString("name")
 
-            m_name = Request.QueryString("name")
+        If Not Page.IsPostBack Then
+            m_selTasks = ""
+
             Me.TxtUserName.Text = m_name
 
             Dim db As New MyDB
@@ -33,7 +35,7 @@ Public Partial Class Commiter
     End Sub
 
     Protected Sub Btn_Commit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Btn_Commit.Click
-        If m_name = "" Then
+        If m_name = "" Or Me.TB_descript.Text = "" Then
             Return
         End If
 
@@ -45,12 +47,13 @@ Public Partial Class Commiter
         Dim respon = Me.DDL_respon.Text
         Dim descript = Me.TB_descript.Text
         Dim comment = Me.TB_comment.Text
+        Dim depart = Me.TB_depart.Text()
 
         Dim db As New MyDB
-        Dim task = "'" + commiter + "','" + type + "','" + status + "'"
+        Dim task = "'" + commiter + "','" + type + "','" + status + "','" + depart + "'"
         task += ",'" + create_date + "','" + due_date + "'"
         task += ",'" + respon + "',@update_date,@description,@comment"
-        Dim info = "commiter, type, status, create_date, due_date, responsible, update_date, description, comment"
+        Dim info = "commiter, type, status, department, create_date, due_date, responsible, update_date, description, comment"
         If db.addTask(info, task, descript, comment) Then
             MyLog.log(commiter + "add new task.")
         End If
@@ -96,7 +99,7 @@ Public Partial Class Commiter
 
         End If
 
-        myselect += ";"
+        myselect += " Order By [id] desc;"
         If Not m_selTasks.Equals(myselect) Then
             m_selTasks = myselect
             Me.SqlDataSourceMyTask.SelectCommand = m_selTasks

@@ -4,12 +4,12 @@ Imports System.Drawing
 Partial Public Class Report2
     Inherits System.Web.UI.Page
 
-    Protected Shared m_name As New String("")
+    Protected m_name As New String("")
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
+        m_name = Request.QueryString("name")
         If Not Page.IsPostBack Then
-            m_name = Request.QueryString("name")
             Me.TxtUserName.Text = m_name
         End If
 
@@ -25,7 +25,7 @@ Partial Public Class Report2
         Dim report As New MyReport
         Dim type As New String("")
         Dim status As String = report.GetPieStatus(val)
-        Response.Redirect("..\manager\DetailReport.aspx?name=" + m_name + "&status=" + status + "&rpname=" + Me.TxtUserName.Text)
+        Response.Redirect("..\manager\DetailReport.aspx?name=" + m_name + "&status=" + status + "&rpname=" + m_name)
 
     End Sub
 
@@ -34,7 +34,7 @@ Partial Public Class Report2
         Dim report As New MyReport
         Dim type As New String("")
         Dim status As String = report.GetBarStatus(val, type)
-        Response.Redirect("..\manager\DetailReport.aspx?name=" + m_name + "&status=" + status + "&type=" + type + "&rpname=" + Me.TxtUserName.Text)
+        Response.Redirect("..\manager\DetailReport.aspx?name=" + m_name + "&status=" + status + "&type=" + type + "&rpname=" + m_name)
 
     End Sub
 

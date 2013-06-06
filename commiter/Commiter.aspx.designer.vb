@@ -157,6 +157,15 @@ Partial Public Class Commiter
     Protected WithEvents DDL_duemin As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
+    '''TB_depart control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents TB_depart As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''TB_comment control.
     '''</summary>
     '''<remarks>

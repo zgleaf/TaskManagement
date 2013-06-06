@@ -6,9 +6,10 @@ Public Partial Class admin
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
+        m_name = Request.QueryString("name")
+        m_pwd = Request.QueryString("pwd")
+
         If Not Page.IsPostBack Then
-            m_name = Request.QueryString("name")
-            m_pwd = Request.QueryString("pwd")
 
             Dim db As New MyDB
             If Not db.login(m_name, m_pwd) And Not db.getUserType(m_name) = "admin" Then

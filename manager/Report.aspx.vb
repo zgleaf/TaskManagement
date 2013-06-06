@@ -4,26 +4,28 @@ Imports System.Drawing
 Partial Public Class Report
     Inherits System.Web.UI.Page
 
-    Protected Shared m_name As New String("")
-    Protected Shared m_nameReq As New String("")
-    Protected Shared back_url As New String("")
+    Protected m_name As New String("")
+    Protected m_nameReq As New String("")
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
+        m_name = Request.QueryString("name")
+        If m_name <> "" Then
+            m_nameReq = "&name=" + m_name
+        Else
+            m_nameReq = ""
+        End If
+
         If Not Page.IsPostBack Then
 
-            m_name = Request.QueryString("name")
+            Me.Back.Attributes.Add("onClick", "javascript:history.back(); return false;")
+
             If m_name <> "" Then
                 Me.Login.Visible = False
-                m_nameReq = "&name=" + m_name
             Else
                 Me.Login.Visible = True
-                m_nameReq = ""
             End If
 
-            If Request.UrlReferrer <> Nothing Then
-                back_url = Request.UrlReferrer.AbsoluteUri.ToString()
-            End If
 
             Me.DDL_Member.Items.Clear()
             Me.DDL_Member.Items.Add("All")
@@ -120,12 +122,6 @@ Partial Public Class Report
 
         Response.Redirect("DetailReport.aspx?status=" + status + "&rpname=" + reponse + m_nameReq)
 
-    End Sub
-
-    Protected Sub Back_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Back.Click
-        If back_url <> "" Then
-            Response.Redirect(back_url)
-        End If
     End Sub
 
     Protected Sub Login_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Login.Click

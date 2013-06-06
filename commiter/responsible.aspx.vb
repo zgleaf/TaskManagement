@@ -1,15 +1,18 @@
 Partial Public Class Responsible1
     Inherits System.Web.UI.Page
 
-    Protected Shared m_name As New String("")
-    Protected Shared m_selTaskId As New String("Select id from Task")
-    Protected Shared m_selTasks As New String("Select * from Task")
+    Protected m_name As New String("")
+    Protected Shared m_selTaskId As New String("")
+    Protected Shared m_selTasks As New String("")
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
-        If Not Page.IsPostBack Then
+        m_name = Request.QueryString("name")
 
-            m_name = Request.QueryString("name")
+        If Not Page.IsPostBack Then
+            m_selTaskId = ""
+            m_selTasks = ""
+
             Me.TxtUserName.Text = m_name
 
             Dim db As New MyDB
@@ -46,7 +49,7 @@ Partial Public Class Responsible1
 
         Dim db As New MyDB
         If db.setTaskStatus(id, respon, status, comment) Then
-            MyLog.log(respon + "update task: " + id.ToString() + ".")
+            MyLog.log(respon + " update task: " + id.ToString() + ".")
         End If
 
         Response.Redirect(Request.RawUrl.ToString)
@@ -158,6 +161,6 @@ Partial Public Class Responsible1
     End Sub
 
     Protected Sub LB_Commit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LB_Commit.Click
-        Response.Redirect("Commiter.aspx?name=" + Me.TxtUserName.Text)
+        Response.Redirect("Commiter.aspx?name=" + m_name)
     End Sub
 End Class

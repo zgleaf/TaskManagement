@@ -1,19 +1,21 @@
 Partial Public Class Responsible
     Inherits System.Web.UI.Page
 
-    Protected Shared m_name As New String("")
-    Protected Shared m_selTaskId As New String("Select id from Task")
-    Protected Shared m_selTasks As New String("Select * from Task")
+    Protected m_name As New String("")
+    Protected Shared m_selTaskId As New String("")
+    Protected Shared m_selTasks As New String("")
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
-        If Not Page.IsPostBack Then
+        m_name = Request.QueryString("name")
 
-            m_name = Request.QueryString("name")
+        If Not Page.IsPostBack Then
+            m_selTaskId = ""
+            m_selTasks = ""
+
             Me.TxtUserName.Text = m_name
 
             Dim db As New MyDB
-
             Dim mytaskinfo = db.getTaskInfo(m_name, "responsible")
             Me.HL_tasknum.Text = mytaskinfo
 
@@ -46,7 +48,7 @@ Partial Public Class Responsible
 
         Dim db As New MyDB
         If db.setTaskStatus(id, respon, status, comment) Then
-            MyLog.log(respon + "update task: " + id.ToString() + ".")
+            MyLog.log(respon + " update task: " + id.ToString() + ".")
         End If
 
         Response.Redirect(Request.RawUrl.ToString)
